@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent-coral: #d5543c;
+  --color-accent-bright-orange: #ff7418;
+  --color-accent-500: #ff9e00;
+  --color-brand-purple: #5a189a;
+  --color-surface-dark: #0e0b0e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-righteous {
+    font-family: var(--font-righteous), sans-serif;
+  }
+
+  .font-rufina {
+    font-family: var(--font-rufina), serif;
+  }
+
+  .font-sora {
+    font-family: var(--font-sora), sans-serif;
+  }
+
+  .font-red-hat {
+    font-family: var(--font-red-hat), sans-serif;
+  }
+
+  .font-rubik-vinyl {
+    font-family: var(--font-rubik-vinyl), sans-serif;
+  }
+}
+
