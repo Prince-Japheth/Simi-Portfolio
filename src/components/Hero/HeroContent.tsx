@@ -67,7 +67,7 @@ export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> 
         {/* Role Subtitles (Frame 1618874928) - Fades in when scrolled */}
         <motion.div
           style={{ opacity: rolesOpacity }}
-          className="absolute left-1/2 -translate-x-1/2 top-[720px] max-md:top-[540px] flex flex-col md:flex-row items-center gap-[18px] z-20"
+          className="absolute left-1/2 -translate-x-1/2 top-[720px] max-md:top-[540px] flex flex-row items-center justify-center gap-[18px] max-md:gap-[10px] w-full max-md:scale-90 z-20"
         >
           {/* UX Designer */}
           <div className="flex flex-col items-center gap-[4px]">

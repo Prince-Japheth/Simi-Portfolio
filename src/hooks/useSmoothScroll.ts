@@ -37,14 +37,20 @@ export function useSmoothScroll() {
         clearTimeout(wheelTimeout);
       }
 
+      // Dynamically calculate second snap point: when the 600px div touches bottom of screen
+      const snapThreshold2 = window.innerHeight + 600;
+
       // If we are scrolling down from near the very top, activate the snap lock to the hero showcase
       if (currentY < 10 && e.deltaY > 0) {
         snapLocked = true;
+        targetY = snapThreshold;
+      } else if (currentY > snapThreshold2 - 150 && currentY < snapThreshold2 && e.deltaY > 0) {
+        // As we approach the second threshold from above (within 150px), snap to it
+        snapLocked = true;
+        targetY = snapThreshold2;
       }
 
-      if (snapLocked) {
-        targetY = snapThreshold;
-      } else {
+      if (!snapLocked) {
         // Accumulate scroll direction normally
         targetY += e.deltaY * stepMultiplier;
       }
