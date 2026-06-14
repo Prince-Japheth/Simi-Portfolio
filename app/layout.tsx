@@ -53,7 +53,7 @@ export default function RootLayout({
       lang="en"
       className={`${righteous.variable} ${rufina.variable} ${rubikVinyl.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#030303]">
+      <body className="min-h-full bg-[#030303] overflow-x-hidden">
         <StoreProvider>
           <ErrorBoundary>{children}</ErrorBoundary>
         </StoreProvider>

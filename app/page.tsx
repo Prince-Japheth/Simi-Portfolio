@@ -5,7 +5,7 @@ import HeroSectionsShowcase from '@/components/HeroSectionsShowcase/HeroSections
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-[#030303]">
+    <div className="relative min-h-screen w-full bg-[#030303] overflow-x-clip">
       <Header />
       <main className="w-full">
         <HeroSection />

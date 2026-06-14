@@ -27,7 +27,7 @@ export function useSmoothScroll() {
 
     let snapLocked = false;
     let wheelTimeout: ReturnType<typeof setTimeout> | null = null;
-    const snapThreshold = 450; // Perfect snap point where hero text is faded out and showcase is fully in view
+    const snapThreshold = 450; // Perfect snap point where SIMI is fully enlarged
 
     const onWheel = (e: WheelEvent) => {
       // Prevent the browser's rigid default step scroll
