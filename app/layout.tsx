@@ -37,6 +37,8 @@ const rubikVinyl = localFont({
   display: 'swap',
 });
 
+import SiteLoader from '@/components/Loader/SiteLoader';
+
 export const metadata: Metadata = {
   title: 'Simi | Product & UX Designer Portfolio',
   description:
@@ -54,6 +56,7 @@ export default function RootLayout({
       className={`${righteous.variable} ${rufina.variable} ${rubikVinyl.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[#030303] overflow-x-hidden">
+        <SiteLoader />
         <StoreProvider>
           <ErrorBoundary>{children}</ErrorBoundary>
         </StoreProvider>

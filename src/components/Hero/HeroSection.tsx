@@ -35,8 +35,8 @@ export default function HeroSection() {
       className="relative w-full flex flex-col bg-[#030303] select-none overflow-visible"
     >
       {/* 1. Sticky Hero Section for animation */}
-      <div className="relative w-full h-[200vh] z-10">
-        <div className="sticky top-0 w-full h-[100vh] min-h-[900px] overflow-visible flex flex-col items-center justify-start">
+      <div className="relative w-full h-[200vh] max-md:h-[170vh] z-10">
+        <div className="sticky top-0 w-full h-[100vh] min-h-[900px] max-md:min-h-[600px] overflow-visible flex flex-col items-center justify-start">
           <HeroBackground scrollY={projectScrollY} />
           <HeroContent scrollY={projectScrollY} />
           <ShowcaseCard scrollY={projectScrollY} />

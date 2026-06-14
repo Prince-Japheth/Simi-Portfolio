@@ -12,74 +12,81 @@ export function useSmoothScroll() {
     // Check if we are running in the browser and if touch devices are supported (avoid forcing it on mobile)
     if (typeof window === 'undefined') return;
 
-    // Skip on touch-only devices since they already have built-in smooth touch-momentum scroll
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
-
     let targetY = window.scrollY;
     let currentY = window.scrollY;
     let isMoving = false;
     let animationFrameId: number | null = null;
+    let touchLastY = 0;
 
     // Inertia configuration
-    const damping = 0.14; // Higher values make the scroll react faster and catch up quicker
-    const stepMultiplier = 0.95; // Slightly softens the scroll wheel step size
+    const damping = 0.14; 
+    const stepMultiplier = 0.95; 
 
     let snapLocked = false;
     let wheelTimeout: ReturnType<typeof setTimeout> | null = null;
-    const snapThreshold = 450; // Perfect snap point where SIMI is fully enlarged
+    const snapThreshold = 450; 
 
-    const onWheel = (e: WheelEvent) => {
-      // Prevent the browser's rigid default step scroll
-      e.preventDefault();
+    const handleScrollDelta = (deltaY: number) => {
+      if (wheelTimeout) clearTimeout(wheelTimeout);
 
-      if (wheelTimeout) {
-        clearTimeout(wheelTimeout);
-      }
-
-      // Dynamically calculate second snap point: when the 600px div touches bottom of screen
-      const snapThreshold2 = window.innerHeight + 600;
-
-      // If we are scrolling down from near the very top, activate the snap lock to the hero showcase
-      if (currentY < 10 && e.deltaY > 0) {
-        snapLocked = true;
-        targetY = snapThreshold;
-      } else if (currentY > snapThreshold2 - 150 && currentY < snapThreshold2 && e.deltaY > 0) {
-        // As we approach the second threshold from above (within 150px), snap to it
-        snapLocked = true;
-        targetY = snapThreshold2;
-      }
+      const isMobile = window.innerWidth < 768;
+      const snapThreshold2 = (isMobile ? 0.7 : 1.0) * window.innerHeight + 600;
 
       if (!snapLocked) {
-        // Accumulate scroll direction normally
-        targetY += e.deltaY * stepMultiplier;
+        let nextTargetY = targetY + deltaY * stepMultiplier;
+
+        if (currentY < 10 && deltaY > 0) {
+          snapLocked = true;
+          targetY = snapThreshold;
+        } else if (deltaY > 0 && currentY < snapThreshold2 - 5 && nextTargetY >= snapThreshold2) {
+          snapLocked = true;
+          targetY = snapThreshold2;
+        } else {
+          targetY = nextTargetY;
+        }
       }
 
-      // Bound the target to screen dimensions
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       targetY = Math.max(0, Math.min(targetY, maxScroll));
 
-      // After 250ms of no wheel events, consider the scroll gesture finished and release the lock
       wheelTimeout = setTimeout(() => {
         snapLocked = false;
       }, 250);
 
-      // Start interpolation loop if not already running
       if (!isMoving) {
         isMoving = true;
         animate();
       }
     };
 
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      handleScrollDelta(e.deltaY);
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchLastY = e.touches[0].clientY;
+      if (wheelTimeout) clearTimeout(wheelTimeout);
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      const currentTouchY = e.touches[0].clientY;
+      const rawDeltaY = touchLastY - currentTouchY;
+      touchLastY = currentTouchY;
+      
+      // Touch deltas are naturally smaller than wheel deltas, multiply to get a comparable momentum feel
+      handleScrollDelta(rawDeltaY * 2.0);
+    };
+
     const animate = () => {
       const diff = targetY - currentY;
       const absDiff = Math.abs(diff);
 
-      // Continue animating until we are extremely close to the target (1.0px threshold)
       if (absDiff > 1.0) {
         const step = diff * damping;
         const absStep = Math.abs(step);
-        const minStep = 0.5; // Enforce a minimum step of 0.5px per frame to avoid sluggishness
+        const minStep = 0.5;
 
         if (absStep < minStep) {
           currentY += Math.sign(diff) * minStep;
@@ -96,10 +103,10 @@ export function useSmoothScroll() {
       }
     };
 
-    // Passive: false is crucial to allow e.preventDefault()
     window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: false });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
 
-    // Sync state if scroll was triggered by other means (scrollbar, keyboard keys)
     const onScroll = () => {
       if (!isMoving) {
         targetY = window.scrollY;
@@ -108,16 +115,13 @@ export function useSmoothScroll() {
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Cleanup listeners and animation frame on unmount
     return () => {
       window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('scroll', onScroll);
-      if (wheelTimeout) {
-        clearTimeout(wheelTimeout);
-      }
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      if (wheelTimeout) clearTimeout(wheelTimeout);
+      if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 }

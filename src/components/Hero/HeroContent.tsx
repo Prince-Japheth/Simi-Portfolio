@@ -6,16 +6,34 @@ import { motion, MotionValue, useTransform, useSpring } from 'framer-motion';
 export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> }) {
   const springConfig = { damping: 28, stiffness: 110, mass: 0.8 };
 
+  const [maxScale, setMaxScale] = React.useState(5.5);
+  const [maxOffsets, setMaxOffsets] = React.useState({ hi: -90, simi: 100 });
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setMaxScale((window.innerWidth * 0.90) / 198); // 90% of screen width
+        setMaxOffsets({ hi: -20, simi: 20 }); // Extremely tight gap on mobile
+      } else {
+        setMaxScale(5.5);
+        setMaxOffsets({ hi: -90, simi: 100 });
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // "Hi, I am" moves up moderately and scales up a bit
-  const rawHiY = useTransform(scrollY, [50, 450], [0, -90]);
+  const rawHiY = useTransform(scrollY, [50, 450], [0, maxOffsets.hi]);
   const hiY = useSpring(rawHiY, springConfig);
   const rawHiScale = useTransform(scrollY, [50, 450], [1, 1.2]);
   const hiScale = useSpring(rawHiScale, springConfig);
 
-  // "SIMI" scales up massively
-  const rawSimiScale = useTransform(scrollY, [50, 450], [1, 5.5]);
+  // "SIMI" scales up massively (or to screen width on mobile)
+  const rawSimiScale = useTransform(scrollY, [50, 450], [1, maxScale]);
   const simiScale = useSpring(rawSimiScale, springConfig);
-  const rawSimiY = useTransform(scrollY, [50, 450], [0, 100]);
+  const rawSimiY = useTransform(scrollY, [50, 450], [0, maxOffsets.simi]);
   const simiY = useSpring(rawSimiY, springConfig);
 
   // Border fades out during scaling
@@ -33,7 +51,7 @@ export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> 
         {/* "Hi, I am" */}
         <motion.p
           style={{ y: hiY, scale: hiScale }}
-          className="absolute left-1/2 -translate-x-1/2 top-[295px] max-md:top-[200px] whitespace-nowrap text-center font-rufina font-normal text-white text-[35px] leading-[43px] origin-bottom"
+          className="absolute left-1/2 -translate-x-1/2 top-[295px] max-md:top-[230px] whitespace-nowrap text-center font-rufina font-normal text-white text-[35px] leading-[43px] origin-bottom"
         >
           Hi, I am
         </motion.p>
@@ -41,7 +59,7 @@ export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> 
         {/* "SIMI" */}
         <motion.div
           style={{ scale: simiScale, y: simiY }}
-          className="absolute left-1/2 -translate-x-1/2 top-[355px] max-md:top-[260px] flex items-center justify-center w-[198px] h-[55px] origin-center"
+          className="absolute left-1/2 -translate-x-1/2 top-[355px] max-md:top-[290px] flex items-center justify-center w-[198px] h-[55px] origin-center"
         >
           {/* <motion.div
             style={{ opacity: simiBorderOpacity }}
@@ -62,12 +80,12 @@ export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> 
               </clipPath></defs>
           </svg>
 
-        </motion.div>
+        </motion.div> 
 
         {/* Role Subtitles (Frame 1618874928) - Fades in when scrolled */}
         <motion.div
           style={{ opacity: rolesOpacity }}
-          className="absolute left-1/2 -translate-x-1/2 top-[720px] max-md:top-[540px] flex flex-col md:flex-row items-center gap-[18px] z-20"
+          className="absolute left-1/2 -translate-x-1/2 top-[720px] max-md:top-[440px] flex flex-row items-center justify-center gap-[18px] max-md:gap-[8px] w-full max-md:scale-[0.80] whitespace-nowrap z-20"
         >
           {/* UX Designer */}
           <div className="flex flex-col items-center gap-[4px]">
