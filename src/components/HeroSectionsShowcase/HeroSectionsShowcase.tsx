@@ -36,15 +36,25 @@ export default function HeroSectionsShowcase() {
       <div className="absolute inset-0 bg-black/10 z-0"></div>
 
       {/* Header Text */}
-      <h2 
+      <motion.h2 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="relative z-10 text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-16 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
         style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
       >
         Hero Sections
-      </h2>
+      </motion.h2>
 
       {/* Carousel */}
-      <div className="relative z-10 w-full flex-1 flex items-center justify-center">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        className="relative z-10 w-full flex-1 flex items-center justify-center"
+      >
         <div className="relative w-full max-w-[100vw] h-[300px] md:h-[648px] flex items-center justify-center">
           <AnimatePresence mode="popLayout">
             {SHOWCASE_ITEMS.map((item, index) => {
@@ -87,10 +97,16 @@ export default function HeroSectionsShowcase() {
             })}
           </AnimatePresence>
         </div>
-      </div>
+      </motion.div>
 
       {/* Controls */}
-      <div className="relative z-10 mt-16 md:mt-24 flex flex-row items-center gap-[23px]">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+        className="relative z-10 mt-16 md:mt-24 flex flex-row items-center gap-[23px]"
+      >
         {/* Prev Button */}
         <button 
           onClick={prevSlide}
@@ -112,7 +128,7 @@ export default function HeroSectionsShowcase() {
             <path d="M20.59 13.7261C20.59 13.7261 34.3159 23.8351 34.3159 27.4522C34.3159 31.0694 20.5898 41.1782 20.5898 41.1782" stroke="#FE804D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 }
