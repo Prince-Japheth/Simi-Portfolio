@@ -35,7 +35,7 @@ export default function HeroSection() {
       className="relative w-full flex flex-col bg-[#030303] select-none overflow-visible"
     >
       {/* 1. Sticky Hero Section for animation */}
-      <div className="relative w-full h-[200vh] z-0">
+      <div className="relative w-full h-[200vh] z-10">
         <div className="sticky top-0 w-full h-[100vh] min-h-[900px] overflow-visible flex flex-col items-center justify-start">
           <HeroBackground scrollY={projectScrollY} />
           <HeroContent scrollY={projectScrollY} />
@@ -44,9 +44,9 @@ export default function HeroSection() {
       </div>
 
       {/* 2. After-Hero Section (Copy) */}
-      <div className="relative w-full h-[600px] bg-[#030303] overflow-hidden z-20">
+      <div className="relative w-full h-[600px] bg-[#0E0B0E] overflow-hidden z-0">
         {/* Frame 1618874930 */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[0px] w-[1152px] h-[469px] bg-[url('/simihero.avif')] bg-cover bg-center rounded-b-[19px] z-10" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-[0px] w-[1152px] h-[469px] bg-[url('/IMG_9606.jpg')] bg-cover bg-center rounded-b-[19px] z-10" />
       </div>
     </div>
   );
