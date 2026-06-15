@@ -2,13 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function MobileScreensSection() {
   const screens = [
-    { id: 1, width: 'md:w-[241px]', height: 'md:h-[541px]', image: '/images/mobile-screens/screen-1.avif' },
-    { id: 2, width: 'md:w-[325px]', height: 'md:h-[547px]', image: '/images/mobile-screens/screen-2.avif' },
-    { id: 3, width: 'md:w-[315px]', height: 'md:h-[541px]', image: '/images/mobile-screens/screen-3.avif' },
-    { id: 4, width: 'md:w-[298px]', height: 'md:h-[485px]', image: '/images/mobile-screens/screen-4.avif' },
+    { id: 1, image: '/images/mobile-screens/screen-1.avif' },
+    { id: 2, image: '/images/mobile-screens/screen-2.avif' },
+    { id: 3, image: '/images/mobile-screens/screen-3.avif' },
+    { id: 4, image: '/images/mobile-screens/screen-4.avif' },
   ];
 
   return (
@@ -30,15 +31,22 @@ export default function MobileScreensSection() {
       <div className="w-full max-w-[1512px] mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-6 lg:gap-8 items-center md:items-end">
           {screens.map((screen, index) => (
-            <motion.img
+            <motion.div
               key={screen.id}
-              src={screen.image}
-              alt={`Mobile Screen ${screen.id}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              className={`w-full max-w-[280px] md:max-w-none ${screen.width} ${screen.height} object-contain shrink-0`}
-            />
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 + (index * 0.1) }}
+              className="relative w-full max-w-[280px] h-[550px] md:max-w-none md:w-[300px] md:h-[600px] shrink-0"
+            >
+              <Image
+                src={screen.image}
+                alt={`Mobile Screen ${screen.id}`}
+                fill
+                className={`object-contain ${screen.id === 2 || screen.id === 3 ? 'scale-[1.16]' : screen.id === 1 ? 'scale-[1.12]' : ''}`}
+                sizes="(max-width: 768px) 280px, 300px"
+              />
+            </motion.div>
           ))}
         </div>
       </div>

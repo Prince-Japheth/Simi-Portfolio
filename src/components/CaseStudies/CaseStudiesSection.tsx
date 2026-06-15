@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CASE_STUDIES = [
-  { id: 1, title: 'Homify Project', image: 'https://placehold.co/800x600/1A1A1A/FFFFFF/webp?text=Homify+Project' },
-  { id: 2, title: 'Scheweppes Project', image: 'https://placehold.co/800x600/1A1A1A/FFFFFF/webp?text=Scheweppes+Project' },
-  { id: 3, title: 'Cardly Project', image: 'https://placehold.co/800x600/1A1A1A/FFFFFF/webp?text=Cardly+Project' },
+  { id: 1, title: 'Homify Project', image: '/images/case-studies/homifyproject.avif' },
+  { id: 2, title: 'Scheweppes Project', image: '/images/case-studies/ScheweppesProject.avif' },
+  { id: 3, title: 'Cardly Project', image: '/images/case-studies/cardly.avif' },
 ];
 
 export default function CaseStudiesSection() {
