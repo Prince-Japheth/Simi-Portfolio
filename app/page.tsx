@@ -6,6 +6,7 @@ import HeroSectionsShowcase from '@/components/HeroSectionsShowcase/HeroSections
 import DashboardsSection from '@/components/Dashboards/DashboardsSection';
 import MobileScreensSection from '@/components/MobileScreens/MobileScreensSection';
 import CaseStudiesSection from '@/components/CaseStudies/CaseStudiesSection';
+import ConceptToProductSection from '@/components/ConceptToProduct/ConceptToProductSection';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <DashboardsSection />
         <MobileScreensSection />
         <CaseStudiesSection />
+        <ConceptToProductSection />
       </main>
     </div>
   );
