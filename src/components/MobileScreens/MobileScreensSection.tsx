@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 
 export default function MobileScreensSection() {
   const screens = [
-    { id: 1, width: 'md:w-[241px]', height: 'md:h-[541px]', image: '' },
-    { id: 2, width: 'md:w-[325px]', height: 'md:h-[547px]', image: '' },
-    { id: 3, width: 'md:w-[315px]', height: 'md:h-[541px]', image: '' },
-    { id: 4, width: 'md:w-[298px]', height: 'md:h-[485px]', image: '' },
+    { id: 1, width: 'md:w-[241px]', height: 'md:h-[541px]', image: '/images/mobile-screens/screen-1.avif' },
+    { id: 2, width: 'md:w-[325px]', height: 'md:h-[547px]', image: '/images/mobile-screens/screen-2.avif' },
+    { id: 3, width: 'md:w-[315px]', height: 'md:h-[541px]', image: '/images/mobile-screens/screen-3.avif' },
+    { id: 4, width: 'md:w-[298px]', height: 'md:h-[485px]', image: '/images/mobile-screens/screen-4.avif' },
   ];
 
   return (

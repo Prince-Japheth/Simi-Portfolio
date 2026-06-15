@@ -33,7 +33,7 @@ export default function HeroSectionsShowcase() {
     <section 
       className="relative w-full md:min-h-[1056px] flex flex-col items-center py-20 overflow-hidden"
       style={{
-        background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/images/showcase/DEC_SG_Sunset_001.jpg), linear-gradient(23.49deg, #151515 25.39%, #D5543C 88.6%)',
+        background: 'linear-gradient(0deg, #D5543C, #D5543C), linear-gradient(23.49deg, #151515 25.39%, #D5543C 88.6%)',
         backgroundBlendMode: 'color, overlay, normal',
         backgroundSize: 'cover, cover, cover',
         backgroundPosition: 'center',

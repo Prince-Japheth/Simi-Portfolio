@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SHOWCASE_ITEMS = [
-  { id: 1, title: 'Dashboard 1', image: '/images/dashboards/Screenshot 2026-04-18 at 1.21.28 PM.png' },
-  { id: 2, title: 'Dashboard 2', image: '/images/dashboards/Screenshot 2026-06-12 at 7.09.38 PM.png' },
-  { id: 3, title: 'Dashboard 3', image: '/images/dashboards/Screenshot 2026-04-02 at 2.47.34 PM.png' },
-  { id: 4, title: 'Dashboard 4', image: '/images/dashboards/Screenshot 2026-06-12 at 7.28.19 PM.png' },
-  { id: 5, title: 'Dashboard 5', image: '/images/dashboards/Screenshot 2026-02-16 at 12.00.29 PM.png' },
+  { id: 1, title: 'Dashboard 1', image: '/images/dashboards/105a71f43833b98d54c3b2d762fa175de06f972b.avif' },
+  { id: 2, title: 'Dashboard 2', image: '/images/dashboards/6b613f7979cf688f75a93afe86ab6ede7fc12beb.avif' },
+  { id: 3, title: 'Dashboard 3', image: '/images/dashboards/7eb6cd4816fe1a5293fc711c145e32ba94ffce2a.avif' },
+  { id: 4, title: 'Dashboard 4', image: '/images/dashboards/978e7226be9ba9fc7475b4b3dfb625e6d6d025db.avif' },
+  { id: 5, title: 'Dashboard 5', image: '/images/dashboards/f09a94a79d3326567953f52c06428ef5d2087dc6.avif' },
 ];
 
 export default function DashboardsSection() {
-  const [activeIndex, setActiveIndex] = useState(1); // Default to the second item
+  const [activeIndex, setActiveIndex] = useState(4); // Default to f09a94a79d3326567953f52c06428ef5d2087dc6.avif // Default to the second item
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
