@@ -3,6 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import localFont from 'next/font/local';
+
+const russoOne = localFont({ src: '../../../public/fonts/Russo_One/RussoOne-Regular.ttf' });
 
 export default function ConceptToProductSection() {
   return (
@@ -21,8 +24,8 @@ export default function ConceptToProductSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="w-full text-center text-[#FFFFFF] text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap font-rubik-vinyl z-10 mt-10 md:mt-[60px] mb-16 md:mb-[100px]"
-        style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
+        className={`w-full text-center text-[#FFFFFF] text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap z-10 mt-10 md:mt-[60px] mb-16 md:mb-[100px] ${russoOne.className}`}
+        style={{ fontFamily: russoOne.style.fontFamily }}
       >
         Concept to Product
       </motion.h2>

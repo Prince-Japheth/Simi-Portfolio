@@ -43,7 +43,7 @@ export default function MobileScreensSection() {
                 src={screen.image}
                 alt={`Mobile Screen ${screen.id}`}
                 fill
-                className={`object-contain ${screen.id === 2 ? 'scale-[1.55] max-md:-translate-x-[12%] md:scale-[1.16]' : screen.id === 3 ? 'scale-[1.45] md:scale-[1.16]' : screen.id === 1 ? 'scale-[1.3] md:scale-[1.12]' : 'scale-[1.5] md:scale-100'}`}
+                className={`object-contain ${screen.id === 2 ? 'scale-[1.5] max-md:translate-x-[3%] md:scale-[1.16]' : screen.id === 3 ? 'scale-[1.45] md:scale-[1.16]' : screen.id === 1 ? 'scale-[1.3] md:scale-[1.12]' : 'scale-[1.45] md:scale-100'}`}
                 sizes="(max-width: 768px) 100vw, 300px"
               />
             </motion.div>
