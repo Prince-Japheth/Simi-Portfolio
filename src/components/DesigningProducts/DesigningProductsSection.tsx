@@ -21,9 +21,119 @@ export default function DesigningProductsSection() {
     '/images/designing-products/baff65d4c2c0845ed0769a80a97cc380f2e9df29.avif',
   ];
 
-  // We duplicate the arrays to allow seamless infinite marquee scrolling
-  const topMarqueeItems = [...topMarqueeImages, ...topMarqueeImages];
-  const bottomMarqueeItems = [...bottomMarqueeImages, ...bottomMarqueeImages];
+  // We duplicate the arrays to allow seamless infinite marquee scrolling and dragging
+  const topMarqueeItems = [...topMarqueeImages, ...topMarqueeImages, ...topMarqueeImages];
+  const bottomMarqueeItems = [...bottomMarqueeImages, ...bottomMarqueeImages, ...bottomMarqueeImages];
+
+  const topScrollRef = React.useRef<HTMLDivElement>(null);
+  const bottomScrollRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    let animationId: number;
+    let isPausedTop = false;
+    let isPausedBottom = false;
+    
+    let isDownTop = false;
+    let startXTop: number;
+    let scrollLeftTop: number;
+    
+    let isDownBottom = false;
+    let startXBottom: number;
+    let scrollLeftBottom: number;
+
+    const elTop = topScrollRef.current;
+    const elBottom = bottomScrollRef.current;
+
+    if (elBottom) {
+      elBottom.scrollLeft = elBottom.scrollWidth / 3;
+    }
+
+    const play = () => {
+      if (elTop && !isPausedTop && !isDownTop) {
+        elTop.scrollLeft += 1;
+        if (elTop.scrollLeft >= elTop.scrollWidth / 3) {
+          elTop.scrollLeft = 0;
+        }
+      }
+      if (elBottom && !isPausedBottom && !isDownBottom) {
+        elBottom.scrollLeft -= 1;
+        if (elBottom.scrollLeft <= 0) {
+          elBottom.scrollLeft = elBottom.scrollWidth / 3;
+        }
+      }
+      animationId = requestAnimationFrame(play);
+    };
+    animationId = requestAnimationFrame(play);
+
+    // Top Events
+    const handleDownTop = (e: PointerEvent) => {
+      isDownTop = true;
+      startXTop = e.pageX - elTop!.offsetLeft;
+      scrollLeftTop = elTop!.scrollLeft;
+      elTop!.style.cursor = 'grabbing';
+    };
+    const handleMoveTop = (e: PointerEvent) => {
+      if (!isDownTop) return;
+      e.preventDefault();
+      const x = e.pageX - elTop!.offsetLeft;
+      const walk = (x - startXTop) * 2;
+      elTop!.scrollLeft = scrollLeftTop - walk;
+    };
+    const handleUpTop = () => { isDownTop = false; elTop!.style.cursor = 'grab'; };
+    const handleEnterTop = () => isPausedTop = true;
+    const handleLeaveTop = () => { isPausedTop = false; isDownTop = false; elTop!.style.cursor = 'grab'; };
+
+    // Bottom Events
+    const handleDownBottom = (e: PointerEvent) => {
+      isDownBottom = true;
+      startXBottom = e.pageX - elBottom!.offsetLeft;
+      scrollLeftBottom = elBottom!.scrollLeft;
+      elBottom!.style.cursor = 'grabbing';
+    };
+    const handleMoveBottom = (e: PointerEvent) => {
+      if (!isDownBottom) return;
+      e.preventDefault();
+      const x = e.pageX - elBottom!.offsetLeft;
+      const walk = (x - startXBottom) * 2;
+      elBottom!.scrollLeft = scrollLeftBottom - walk;
+    };
+    const handleUpBottom = () => { isDownBottom = false; elBottom!.style.cursor = 'grab'; };
+    const handleEnterBottom = () => isPausedBottom = true;
+    const handleLeaveBottom = () => { isPausedBottom = false; isDownBottom = false; elBottom!.style.cursor = 'grab'; };
+
+    if (elTop) {
+      elTop.addEventListener('pointerdown', handleDownTop);
+      elTop.addEventListener('pointermove', handleMoveTop);
+      elTop.addEventListener('pointerup', handleUpTop);
+      elTop.addEventListener('pointerleave', handleLeaveTop);
+      elTop.addEventListener('mouseenter', handleEnterTop);
+    }
+    if (elBottom) {
+      elBottom.addEventListener('pointerdown', handleDownBottom);
+      elBottom.addEventListener('pointermove', handleMoveBottom);
+      elBottom.addEventListener('pointerup', handleUpBottom);
+      elBottom.addEventListener('pointerleave', handleLeaveBottom);
+      elBottom.addEventListener('mouseenter', handleEnterBottom);
+    }
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      if (elTop) {
+        elTop.removeEventListener('pointerdown', handleDownTop);
+        elTop.removeEventListener('pointermove', handleMoveTop);
+        elTop.removeEventListener('pointerup', handleUpTop);
+        elTop.removeEventListener('pointerleave', handleLeaveTop);
+        elTop.removeEventListener('mouseenter', handleEnterTop);
+      }
+      if (elBottom) {
+        elBottom.removeEventListener('pointerdown', handleDownBottom);
+        elBottom.removeEventListener('pointermove', handleMoveBottom);
+        elBottom.removeEventListener('pointerup', handleUpBottom);
+        elBottom.removeEventListener('pointerleave', handleLeaveBottom);
+        elBottom.removeEventListener('mouseenter', handleEnterBottom);
+      }
+    };
+  }, []);
 
   return (
     <section className="relative w-full h-[1084px] bg-[#030303] overflow-hidden flex flex-col items-center z-10">
@@ -123,22 +233,25 @@ export default function DesigningProductsSection() {
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
           className="absolute left-0 top-[335px] w-full overflow-hidden h-[290px]"
         >
-          <motion.div
-            className="flex flex-row items-center gap-[40px] w-max"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          <style dangerouslySetInnerHTML={{__html: `
+            .hide-scroll::-webkit-scrollbar { display: none; }
+            .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+          `}} />
+          <div
+            ref={topScrollRef}
+            className="flex flex-row items-center gap-[40px] w-full overflow-x-auto hide-scroll cursor-grab h-full pl-4"
           >
             {topMarqueeItems.map((img, i) => {
               const bgPositionClass = img.includes('0b029ae812a877d20de0610c80c190bcc604f40b') ? 'bg-top' : 'bg-center';
               return (
                 <div 
                   key={i} 
-                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0`}
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none`}
                   style={{ backgroundImage: `url('${img}')` }}
                 />
               );
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Bottom Marquee */}
@@ -149,22 +262,21 @@ export default function DesigningProductsSection() {
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
           className="absolute left-0 top-[672px] w-full overflow-hidden h-[290px]"
         >
-          <motion.div
-            className="flex flex-row items-center gap-[40px] w-max"
-            animate={{ x: ['-50%', '0%'] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          <div
+            ref={bottomScrollRef}
+            className="flex flex-row items-center gap-[40px] w-full overflow-x-auto hide-scroll cursor-grab h-full pl-4"
           >
             {bottomMarqueeItems.map((img, i) => {
               const bgPositionClass = img.includes('5a3d4f59659812f602a2e038f70e0c386940d833') ? 'bg-bottom' : 'bg-center';
               return (
                 <div 
                   key={i} 
-                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0`}
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none`}
                   style={{ backgroundImage: `url('${img}')` }}
                 />
               );
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
       </div>
