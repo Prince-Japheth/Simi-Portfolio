@@ -5,19 +5,20 @@ import { motion } from 'framer-motion';
 
 export default function DesigningProductsSection() {
   const topMarqueeImages = [
-    '/art 11.jpg',
-    '/p9.png',
-    '/copy_A94B9DA5-F299-4831-A752-2E5D8EB711D2.jpg',
-    '/caewv.jpg',
-    '/sd.png',
+    '/images/designing-products/040cc821f200d938c272d3c645b0e7dd3a8a421f.avif',
+    '/images/designing-products/079aa6ed1b5bcaf491d65ff13537adfbafad8031.avif',
+    '/images/designing-products/0b029ae812a877d20de0610c80c190bcc604f40b.avif',
+    '/images/designing-products/1b72bf469d66c85f44bcff2ee2cd1017f31c4e34.avif',
+    '/images/designing-products/2443c73db9736b3cf9345815ab07813d58d0dae3.avif',
   ];
 
   const bottomMarqueeImages = [
-    '/IMG_7917 2.jpg',
-    '/copy_66FC2D86-AEED-46A9-A9E0-69BD1E5B7E78.jpg',
-    '/Join waitlist 2.jpg',
-    '/Paymyfees (8).jpg',
-    '/bellnice fr 2.jpg',
+    '/images/designing-products/2de102a6893d665856dc48013b9a3649ce02d2b9.avif',
+    '/images/designing-products/5a3d4f59659812f602a2e038f70e0c386940d833.avif',
+    '/images/designing-products/700b0ea7354fd23589f39106df853935b1e7e485.avif',
+    '/images/designing-products/78b0d9bb670acc476daddebde374e20a5df610c0.avif',
+    '/images/designing-products/796f4d60fba0bc918dc33c1bbe9d0415e53bb839.avif',
+    '/images/designing-products/baff65d4c2c0845ed0769a80a97cc380f2e9df29.avif',
   ];
 
   // We duplicate the arrays to allow seamless infinite marquee scrolling
@@ -107,13 +108,16 @@ export default function DesigningProductsSection() {
             animate={{ x: ['0%', '-50%'] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
-            {topMarqueeItems.map((img, i) => (
-              <div 
-                key={i} 
-                className="w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover bg-center shrink-0"
-                style={{ backgroundImage: `url('${img}')` }}
-              />
-            ))}
+            {topMarqueeItems.map((img, i) => {
+              const bgPositionClass = img.includes('0b029ae812a877d20de0610c80c190bcc604f40b') ? 'bg-top' : 'bg-center';
+              return (
+                <div 
+                  key={i} 
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0`}
+                  style={{ backgroundImage: `url('${img}')` }}
+                />
+              );
+            })}
           </motion.div>
         </motion.div>
 
@@ -130,13 +134,16 @@ export default function DesigningProductsSection() {
             animate={{ x: ['-50%', '0%'] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
-            {bottomMarqueeItems.map((img, i) => (
-              <div 
-                key={i} 
-                className="w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover bg-center shrink-0"
-                style={{ backgroundImage: `url('${img}')` }}
-              />
-            ))}
+            {bottomMarqueeItems.map((img, i) => {
+              const bgPositionClass = img.includes('5a3d4f59659812f602a2e038f70e0c386940d833') ? 'bg-bottom' : 'bg-center';
+              return (
+                <div 
+                  key={i} 
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0`}
+                  style={{ backgroundImage: `url('${img}')` }}
+                />
+              );
+            })}
           </motion.div>
         </motion.div>
 

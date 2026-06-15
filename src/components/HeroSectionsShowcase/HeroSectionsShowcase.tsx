@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SHOWCASE_ITEMS = [
-  { id: 1, title: 'Paymyfees', image: '/Paymyfees Landing page.jpg' },
-  { id: 2, title: 'Picatip', image: '/Picatip landing page.jpg' },
-  { id: 3, title: 'Screenshot', image: '/Screenshot 2026-06-13 at 1.15.53 PM.png' },
-  { id: 4, title: 'Amdari', image: '/Amdari landing page.jpg' }, // Assumed extension
-  { id: 5, title: 'Popkup', image: '/Popkup landing page.jpg' }, // Assumed extension
+  { id: 1, title: 'Paymyfees', image: '/images/showcase/1f5891bc17c7fde57be5030a5380dce3dc730c41.avif' },
+  { id: 2, title: 'Picatip', image: '/images/showcase/20c134e16c3bccf20ae2cbda96f21df43f36fff5.avif' },
+  { id: 3, title: 'Screenshot', image: '/images/showcase/252272175efd029df8daa49ee56ef50773d346f2.avif' },
+  { id: 4, title: 'Amdari', image: '/images/showcase/4324dc3078b363b6d15f4c9fb8740659f9899e75.avif' },
+  { id: 5, title: 'Popkup', image: '/images/showcase/7bb6e2a46a621d7e05ec2bf5d36fe6e346ff64ab.avif' },
 ];
 
 export default function HeroSectionsShowcase() {
-  const [activeIndex, setActiveIndex] = useState(1); // Default to the second item (Picatip)
+  const [activeIndex, setActiveIndex] = useState(4); // Default to 7bb6e2a46a621d7e05ec2bf5d36fe6e346ff64ab.avif
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
@@ -22,11 +22,18 @@ export default function HeroSectionsShowcase() {
     setActiveIndex((prev) => (prev - 1 + SHOWCASE_ITEMS.length) % SHOWCASE_ITEMS.length);
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section 
       className="relative w-full md:min-h-[1056px] flex flex-col items-center py-20 overflow-hidden"
       style={{
-        background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/DEC_SG_Sunset_001.jpg), linear-gradient(23.49deg, #151515 25.39%, #D5543C 88.6%)',
+        background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/images/showcase/DEC_SG_Sunset_001.jpg), linear-gradient(23.49deg, #151515 25.39%, #D5543C 88.6%)',
         backgroundBlendMode: 'color, overlay, normal',
         backgroundSize: 'cover, cover, cover',
         backgroundPosition: 'center',
@@ -93,7 +100,7 @@ export default function HeroSectionsShowcase() {
                   onClick={() => setActiveIndex(index)}
                 >
                   <div 
-                    className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+                    className="w-full h-full bg-[length:100%_auto] bg-top bg-no-repeat bg-[#1A1A1A]"
                     style={{ backgroundImage: `url('${item.image}')` }}
                   />
                   {/* Optional overlay for non-active items to darken them slightly */}

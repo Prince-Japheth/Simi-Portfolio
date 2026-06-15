@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CASE_STUDIES = [
@@ -20,11 +20,18 @@ export default function CaseStudiesSection() {
     setActiveIndex((prev) => (prev - 1 + CASE_STUDIES.length) % CASE_STUDIES.length);
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % CASE_STUDIES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section 
       className="relative w-full md:min-h-[972px] flex flex-col items-center py-20 overflow-hidden"
       style={{
-        background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/DEC_SG_Sunset_001.jpg), linear-gradient(171.06deg, #151515 11.07%, #D5543C 113.91%)',
+        background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/images/case-studies/DEC_SG_Sunset_001.jpg), linear-gradient(171.06deg, #151515 11.07%, #D5543C 113.91%)',
         backgroundBlendMode: 'color, overlay, normal',
         backgroundSize: 'cover, cover, cover',
         backgroundPosition: 'center',

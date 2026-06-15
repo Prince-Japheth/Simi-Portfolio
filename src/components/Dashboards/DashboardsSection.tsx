@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SHOWCASE_ITEMS = [
-  { id: 1, title: 'Dashboard 1', image: '/Screenshot 2026-04-18 at 1.21.28 PM.png' },
-  { id: 2, title: 'Dashboard 2', image: '/Screenshot 2026-06-12 at 7.09.38 PM.png' },
-  { id: 3, title: 'Dashboard 3', image: '/Screenshot 2026-04-02 at 2.47.34 PM.png' },
-  { id: 4, title: 'Dashboard 4', image: '/Screenshot 2026-06-12 at 7.28.19 PM.png' },
-  { id: 5, title: 'Dashboard 5', image: '/Screenshot 2026-02-16 at 12.00.29 PM.png' },
+  { id: 1, title: 'Dashboard 1', image: '/images/dashboards/Screenshot 2026-04-18 at 1.21.28 PM.png' },
+  { id: 2, title: 'Dashboard 2', image: '/images/dashboards/Screenshot 2026-06-12 at 7.09.38 PM.png' },
+  { id: 3, title: 'Dashboard 3', image: '/images/dashboards/Screenshot 2026-04-02 at 2.47.34 PM.png' },
+  { id: 4, title: 'Dashboard 4', image: '/images/dashboards/Screenshot 2026-06-12 at 7.28.19 PM.png' },
+  { id: 5, title: 'Dashboard 5', image: '/images/dashboards/Screenshot 2026-02-16 at 12.00.29 PM.png' },
 ];
 
 export default function DashboardsSection() {
@@ -21,6 +21,13 @@ export default function DashboardsSection() {
   const prevSlide = () => {
     setActiveIndex((prev) => (prev - 1 + SHOWCASE_ITEMS.length) % SHOWCASE_ITEMS.length);
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section 
