@@ -3,6 +3,7 @@ import Header from '@/components/Navbar/Header';
 import Footer from '@/components/Footer/Footer';
 import AboutHeroSection from '@/components/AboutHero/AboutHeroSection';
 import AboutStatsSection from '@/components/AboutStats/AboutStatsSection';
+import ExperienceSection from '@/components/Experience/ExperienceSection';
 
 export default function AboutPage() {
   return (
@@ -10,6 +11,7 @@ export default function AboutPage() {
       <Header />
       <AboutHeroSection />
       <AboutStatsSection />
+      <ExperienceSection />
       <Footer />
     </main>
   );

@@ -17,7 +17,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setMaxScale(1.8);
-        setScrollEnd(0.25);
+        setScrollEnd(0.4);
       } else {
         setMaxScale(3.2);
         setScrollEnd(0.4);
