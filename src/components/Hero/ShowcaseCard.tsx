@@ -6,14 +6,14 @@ import { motion, MotionValue, useTransform, useSpring } from 'framer-motion';
 import ErrorState from '@/components/ErrorState/ErrorState';
 import { logger } from '@/lib/logger';
 
-export default function ShowcaseCard({ scrollY }: { scrollY: MotionValue<number> }) {
+export default function ShowcaseCard({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
   const [imageError, setImageError] = useState(false);
   const springConfig = { damping: 26, stiffness: 100, mass: 0.9 };
 
   // Glass card enters from bottom
-  const rawCardOpacity = useTransform(scrollY, [250, 550], [0, 1]);
+  const rawCardOpacity = useTransform(scrollProgress, [0.35, 0.65], [0, 1]);
   const cardOpacity = useSpring(rawCardOpacity, springConfig);
-  const rawCardY = useTransform(scrollY, [250, 550], [150, 0]);
+  const rawCardY = useTransform(scrollProgress, [0.35, 0.65], [150, 0]);
   const cardY = useSpring(rawCardY, springConfig);
   
   if (imageError) {
@@ -26,7 +26,7 @@ export default function ShowcaseCard({ scrollY }: { scrollY: MotionValue<number>
       <div className="relative w-full max-w-[1512px] h-full mx-auto">
         <motion.div 
           style={{ opacity: cardOpacity, y: cardY }}
-          className="absolute left-1/2 -translate-x-1/2 top-[800px] max-md:top-[600px] w-[1192px] max-w-[95vw] h-[612px] max-md:h-[400px] bg-[rgba(255,255,255,0.16)] rounded-[16px] overflow-hidden pointer-events-auto box-border"
+          className="absolute left-1/2 -translate-x-1/2 top-[800px] max-md:top-[480px] w-[1192px] max-w-[95vw] h-[612px] max-md:h-[400px] bg-[rgba(255,255,255,0.16)] rounded-[16px] overflow-hidden pointer-events-auto box-border"
         >
           <div className="relative w-full h-full">
             <Image

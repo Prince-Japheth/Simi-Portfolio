@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, MotionValue, useTransform, useSpring } from 'framer-motion';
 
-export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> }) {
+export default function HeroContent({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
   const springConfig = { damping: 28, stiffness: 110, mass: 0.8 };
 
   const [maxScale, setMaxScale] = React.useState(5.5);
@@ -25,23 +25,23 @@ export default function HeroContent({ scrollY }: { scrollY: MotionValue<number> 
   }, []);
 
   // "Hi, I am" moves up moderately and scales up a bit
-  const rawHiY = useTransform(scrollY, [50, 450], [0, maxOffsets.hi]);
+  const rawHiY = useTransform(scrollProgress, [0.0, 0.4], [0, maxOffsets.hi]);
   const hiY = useSpring(rawHiY, springConfig);
-  const rawHiScale = useTransform(scrollY, [50, 450], [1, 1.2]);
+  const rawHiScale = useTransform(scrollProgress, [0.0, 0.4], [1, 1.2]);
   const hiScale = useSpring(rawHiScale, springConfig);
 
   // "SIMI" scales up massively (or to screen width on mobile)
-  const rawSimiScale = useTransform(scrollY, [50, 450], [1, maxScale]);
+  const rawSimiScale = useTransform(scrollProgress, [0.0, 0.4], [1, maxScale]);
   const simiScale = useSpring(rawSimiScale, springConfig);
-  const rawSimiY = useTransform(scrollY, [50, 450], [0, maxOffsets.simi]);
+  const rawSimiY = useTransform(scrollProgress, [0.0, 0.4], [0, maxOffsets.simi]);
   const simiY = useSpring(rawSimiY, springConfig);
 
   // Border fades out during scaling
-  const rawSimiBorderOpacity = useTransform(scrollY, [0, 150], [1, 0]);
+  const rawSimiBorderOpacity = useTransform(scrollProgress, [0.0, 0.15], [1, 0]);
   const simiBorderOpacity = useSpring(rawSimiBorderOpacity, springConfig);
 
   // Role subtitles fade in when SIMI scales
-  const rawRolesOpacity = useTransform(scrollY, [200, 450], [0, 1]);
+  const rawRolesOpacity = useTransform(scrollProgress, [0.15, 0.4], [0, 1]);
   const rolesOpacity = useSpring(rawRolesOpacity, springConfig);
 
   return (

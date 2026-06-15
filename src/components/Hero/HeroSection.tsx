@@ -5,28 +5,12 @@ import { useScroll, useMotionValue, useMotionValueEvent } from 'framer-motion';
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
 import ShowcaseCard from './ShowcaseCard';
-import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const projectScrollY = useMotionValue(0);
-  const lastScrollY = useRef(0);
-
-  // Initialize the momentum scroll
-  useSmoothScroll();
-
-  // Custom directional scroll behavior for snappier retreat
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const last = lastScrollY.current;
-    if (latest < last) {
-      const delta = last - latest;
-      const acceleratedValue = Math.max(0, projectScrollY.get() - delta * 1.8);
-      projectScrollY.set(acceleratedValue);
-    } else {
-      projectScrollY.set(latest);
-    }
-    lastScrollY.current = latest;
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
   });
 
   return (
@@ -35,11 +19,11 @@ export default function HeroSection() {
       className="relative w-full flex flex-col bg-[#030303] select-none overflow-visible"
     >
       {/* 1. Sticky Hero Section for animation */}
-      <div className="relative w-full h-[200vh] max-md:h-[170vh] z-10">
+      <div className="relative w-full h-[400vh] max-md:h-[300vh] z-10">
         <div className="sticky top-0 w-full h-[100vh] min-h-[900px] max-md:min-h-[600px] overflow-visible flex flex-col items-center justify-start">
-          <HeroBackground scrollY={projectScrollY} />
-          <HeroContent scrollY={projectScrollY} />
-          <ShowcaseCard scrollY={projectScrollY} />
+          <HeroBackground scrollProgress={scrollYProgress} />
+          <HeroContent scrollProgress={scrollYProgress} />
+          <ShowcaseCard scrollProgress={scrollYProgress} />
         </div>
       </div>
 
