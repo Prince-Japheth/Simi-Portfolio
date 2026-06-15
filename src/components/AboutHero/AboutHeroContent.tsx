@@ -30,7 +30,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
 
   const rawSimiScale = useTransform(scrollProgress, [0.0, scrollEnd], [1, maxScale]);
   const simiScale = useSpring(rawSimiScale, springConfig);
-  const rawSimiY = useTransform(scrollProgress, [0.0, scrollEnd], [0, 80]);
+  const rawSimiY = useTransform(scrollProgress, [0.0, scrollEnd], [0, 120]);
   const simiY = useSpring(rawSimiY, springConfig);
 
   const rawTextOpacity = useTransform(scrollProgress, [scrollEnd * 0.8, scrollEnd], [0, 1]);
