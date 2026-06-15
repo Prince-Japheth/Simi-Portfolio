@@ -16,10 +16,10 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
   React.useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setMaxScale(4.5);
+        setMaxScale(1.8);
         setScrollEnd(0.25);
       } else {
-        setMaxScale(6.5);
+        setMaxScale(2.2);
         setScrollEnd(0.4);
       }
     };
@@ -43,9 +43,9 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
         {/* Image replacing SIMI text */}
         <motion.div
           style={{ scale: simiScale, y: simiY }}
-          className="absolute left-1/2 -translate-x-1/2 top-[355px] max-md:top-[290px] w-[200px] h-[100px] origin-center z-20 flex items-center justify-center overflow-hidden rounded-[8px]"
+          className="absolute left-1/2 -translate-x-1/2 top-[325px] max-md:top-[280px] origin-center z-20 flex items-center justify-center"
         >
-          <Image src="/abouthero.avif" alt="Simi" fill className="object-cover" />
+          <img src="/abouthero.avif" alt="Simi" className="h-[160px] max-md:h-[120px] w-auto rounded-[12px] object-contain" />
         </motion.div>
 
         {/* Text Top Left */}

@@ -1,15 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const { scrollY } = useScroll();
-  const [show, setShow] = useState(false);
+  const pathname = usePathname();
+  const isAboutPage = pathname === '/about';
+  const [show, setShow] = useState(isAboutPage);
+
+  useEffect(() => {
+    if (isAboutPage) {
+      setShow(true);
+    } else {
+      setShow(scrollY.get() > 400);
+    }
+  }, [isAboutPage, scrollY]);
 
   // Header drops in when we've scrolled past 400px (around when SIMI finishes scaling)
   useMotionValueEvent(scrollY, "change", (latest) => {
+    if (isAboutPage) return;
     if (latest > 400 && !show) {
       setShow(true);
     } else if (latest <= 400 && show) {
@@ -19,7 +32,7 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={{ y: isAboutPage ? 0 : -100 }}
       animate={{ y: show ? 0 : -100 }}
       transition={{ type: "spring", damping: 26, stiffness: 100, mass: 0.9 }}
       className="fixed left-0 right-0 top-[19px] z-50 mx-auto flex w-full max-w-[1512px] flex-col md:flex-row items-center justify-between px-6 md:px-[199px] pointer-events-none"
@@ -29,9 +42,9 @@ export default function Header() {
       </div>
 
       <nav className="hidden md:flex flex-row items-center justify-center gap-5 px-[30px] py-[14px] bg-gradient-to-r from-[#D5543C] via-[#FF7418] to-black rounded-[18px] pointer-events-auto shadow-lg">
-        <a href="#about" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">About</a>
-        <a href="#experience" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">Experience</a>
-        <a href="#outside" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap">Outside Digital Products</a>
+        <Link href="/about" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">About</Link>
+        <Link href="/#experience" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">Experience</Link>
+        <Link href="/#outside" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap">Outside Digital Products</Link>
       </nav>
 
       <button className="hidden md:flex flex-row items-center justify-center gap-[3px] w-[103px] h-[44px] bg-[#FF7418] border border-[#FF7418] rounded-[20px] pointer-events-auto hover:bg-[#D35A05] transition-colors shadow-lg group">

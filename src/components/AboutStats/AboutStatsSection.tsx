@@ -31,14 +31,6 @@ function Counter({ from, to, duration, suffix = "" }: { from: number; to: number
 export default function AboutStatsSection() {
   return (
     <section className={`relative w-full flex justify-center items-center py-[49px] max-md:py-[40px] bg-[#080707] overflow-hidden ${sora.className}`}>
-      {/* Background Blobs */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
-        <div className="absolute w-[756px] h-[435px] left-[-222px] top-[13px] bg-[#5A189A] blur-[100px]" />
-        <div className="absolute w-[756px] h-[435px] left-[871px] top-[395px] bg-[#FF9E00] blur-[100px] rotate-180" />
-        <div className="absolute w-[756px] h-[435px] left-[85px] top-[-85px] bg-[#FFFFFF] blur-[100px]" />
-        <div className="absolute w-[756px] h-[435px] left-[564px] top-[493px] bg-[#FFFFFF] blur-[100px] rotate-180" />
-      </div>
-
       <div className="relative z-10 w-full max-w-[1137px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-[44px]">
         
         <div className="flex flex-col items-center gap-[8px]">

@@ -83,7 +83,9 @@ export default function Footer() {
               </h3>
               <div className="flex flex-row gap-4 items-center">
                 <a href="#" className="w-10 h-10 flex items-center justify-center text-white hover:text-gray-300 transition-colors">
-                  <span className="font-bold text-[24px]">in</span>
+                  <div className="w-[28px] h-[28px] border-[2px] border-currentColor rounded-[6px] flex items-center justify-center">
+                    <span className="font-bold text-[20px]">in</span>
+                  </div>
                 </a>
                 <a href="#" className="w-10 h-10 flex items-center justify-center text-white hover:text-gray-300 transition-colors">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
