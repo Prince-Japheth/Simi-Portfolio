@@ -18,7 +18,13 @@ export default function ExpertiseSection() {
   return (
     <section className="relative w-full py-20 bg-[#030303] overflow-hidden flex flex-col items-center">
       {/* Header Content */}
-      <div className="flex flex-col items-center text-center px-4 max-w-4xl mx-auto mb-16 gap-3">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col items-center text-center px-4 max-w-4xl mx-auto mb-16 gap-3"
+      >
         <h2 
           className="text-white text-3xl md:text-[35px] leading-tight font-normal"
           style={{ fontFamily: 'var(--font-rufina)' }}
@@ -31,10 +37,16 @@ export default function ExpertiseSection() {
         >
           A multidisciplinary background spanning product design, product strategy, research, growth, and execution.
         </p>
-      </div>
+      </motion.div>
 
       {/* Expertise Cards Marquee */}
-      <div className="w-full relative overflow-hidden">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="w-full relative overflow-hidden"
+      >
         <motion.div 
           className="flex flex-row items-center gap-[41px] w-max"
           animate={{ x: ['0%', '-50%'] }}
@@ -54,7 +66,7 @@ export default function ExpertiseSection() {
             </div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

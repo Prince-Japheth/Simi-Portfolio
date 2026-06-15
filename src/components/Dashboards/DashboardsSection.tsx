@@ -91,7 +91,7 @@ export default function DashboardsSection() {
                   onClick={() => setActiveIndex(index)}
                 >
                   <div 
-                    className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+                    className="w-full h-full bg-cover bg-top bg-no-repeat bg-[#1A1A1A]"
                     style={{ backgroundImage: `url('${item.image}')` }}
                   />
                   {/* Optional overlay for non-active items to darken them slightly */}

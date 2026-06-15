@@ -10,7 +10,7 @@ const russoOne = localFont({ src: '../../../public/fonts/Russo_One/RussoOne-Regu
 export default function ConceptToProductSection() {
   return (
     <section 
-      className="relative w-full min-h-[1099px] flex flex-col items-center py-20 overflow-hidden"
+      className="relative w-full md:min-h-[1099px] flex flex-col items-center py-20 overflow-hidden"
       style={{
         background: 'linear-gradient(0deg, rgba(213,84,60,0.88), rgba(213,84,60,0.88)), linear-gradient(15.78deg, #151515 30.2%, #D5543C 93.54%)',
         backgroundBlendMode: 'color, overlay, normal',
@@ -24,7 +24,7 @@ export default function ConceptToProductSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className={`w-full text-center text-[#FFFFFF] text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap z-10 mt-10 md:mt-[60px] mb-16 md:mb-[100px] ${russoOne.className}`}
+        className={`w-full text-center text-[#FFFFFF] text-[30px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap z-10 mt-10 md:mt-[60px] mb-16 md:mb-[100px] ${russoOne.className}`}
         style={{ fontFamily: russoOne.style.fontFamily }}
       >
         Concept to Product
@@ -32,7 +32,7 @@ export default function ConceptToProductSection() {
 
       {/* Main Image Content */}
       <div className="relative z-10 w-full max-w-[1012px] px-4 md:px-8">
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}

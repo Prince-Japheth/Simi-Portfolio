@@ -28,9 +28,8 @@ export default function HeroSection() {
       </div>
 
       {/* 2. After-Hero Section (Copy) */}
-      <div className="relative w-full h-[300px] md:h-[600px] bg-[#0E0B0E] overflow-hidden z-0">
+      <div className="relative w-full h-[200px] md:h-[600px] bg-[#0E0B0E] overflow-hidden z-0">
         {/* Frame 1618874930 */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[0px] w-[95%] md:w-[1152px] h-[250px] md:h-[469px] max-w-[1152px] bg-[url('/images/hero/IMG_9606.jpg')] bg-cover bg-center rounded-b-[19px] z-10" />
       </div>
     </div>
   );

@@ -31,10 +31,20 @@ export default function DesigningProductsSection() {
         
         {/* Floating Tag: Product Designer */}
         <motion.div 
-          initial={{ opacity: 0, y: 20, rotate: -5 }}
-          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+          initial={{ opacity: 0, rotate: -5 }}
+          whileInView={{ 
+            opacity: 1,
+            x: [0, 15, -15, 10, 0],
+            y: [0, -20, 10, -15, 0],
+            rotate: [-5, 2, -2, 4, -5]
+          }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          transition={{ 
+            opacity: { duration: 0.7, ease: "easeOut", delay: 0.1 },
+            x: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 9, repeat: Infinity, ease: "easeInOut" }
+          }}
           className="absolute left-6 md:left-[183px] top-[53px] w-[169px] h-[74px]"
         >
           <svg width="169" height="74" viewBox="0 0 169 74" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,10 +56,20 @@ export default function DesigningProductsSection() {
 
         {/* Floating Tag: Product Strategy */}
         <motion.div 
-          initial={{ opacity: 0, y: 20, rotate: 5 }}
-          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+          initial={{ opacity: 0, rotate: 5 }}
+          whileInView={{ 
+            opacity: 1,
+            x: [0, -20, 15, -10, 0],
+            y: [0, 15, -20, 10, 0],
+            rotate: [5, -3, 3, -4, 5]
+          }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+          transition={{ 
+            opacity: { duration: 0.7, ease: "easeOut", delay: 0.3 },
+            x: { duration: 8.5, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 7.5, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 9.5, repeat: Infinity, ease: "easeInOut" }
+          }}
           className="absolute right-6 md:left-[1160px] top-[214px] w-[172px] h-[75px]"
         >
           <svg width="172" height="75" viewBox="0 0 172 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +98,7 @@ export default function DesigningProductsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="absolute left-1/2 -translate-x-1/2 top-[116px] w-full text-center text-[#FFFFFF] text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap font-rubik-vinyl"
+          className="absolute left-1/2 -translate-x-1/2 top-[116px] w-full text-center text-[#FFFFFF] text-[35px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap font-rubik-vinyl"
           style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
         >
           Designing Products

@@ -7,6 +7,7 @@ import DashboardsSection from '@/components/Dashboards/DashboardsSection';
 import MobileScreensSection from '@/components/MobileScreens/MobileScreensSection';
 import CaseStudiesSection from '@/components/CaseStudies/CaseStudiesSection';
 import ConceptToProductSection from '@/components/ConceptToProduct/ConceptToProductSection';
+import ProcessSection from '@/components/Process/ProcessSection';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <MobileScreensSection />
         <CaseStudiesSection />
         <ConceptToProductSection />
+        <ProcessSection />
       </main>
     </div>
   );
