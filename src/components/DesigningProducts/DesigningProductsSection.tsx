@@ -107,10 +107,10 @@ export default function DesigningProductsSection() {
         {/* Subtitle */}
         <motion.p 
           className="absolute left-1/2 -translate-x-1/2 top-[180px] md:top-[248px] w-[90vw] md:w-[1043px] text-center text-[#FFFFFF] text-[16px] md:text-[20px] leading-[25px] font-rufina font-normal"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.35 }}
         >
           I design digital experiences that connect user needs, business goals, and product growth.
         </motion.p>

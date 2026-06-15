@@ -43,6 +43,24 @@ export const metadata: Metadata = {
   title: 'Simi | Product & UX Designer Portfolio',
   description:
     'Explore the UX/UI designs, digital products, and product strategy of Simi.',
+  openGraph: {
+    title: 'Simi | Product & UX Designer Portfolio',
+    description: 'Explore the UX/UI designs, digital products, and product strategy of Simi.',
+    images: [
+      {
+        url: '/simihero.avif',
+        width: 1200,
+        height: 630,
+        alt: 'Simi Portfolio Showcase',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Simi | Product & UX Designer Portfolio',
+    description: 'Explore the UX/UI designs, digital products, and product strategy of Simi.',
+    images: ['/simihero.avif'],
+  },
 };
 
 export default function RootLayout({

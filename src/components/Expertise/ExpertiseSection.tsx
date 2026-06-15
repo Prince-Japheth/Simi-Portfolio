@@ -18,26 +18,28 @@ export default function ExpertiseSection() {
   return (
     <section className="relative w-full py-20 bg-[#030303] overflow-hidden flex flex-col items-center">
       {/* Header Content */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex flex-col items-center text-center px-4 max-w-4xl mx-auto mb-16 gap-3"
-      >
-        <h2 
+      <div className="flex flex-col items-center text-center px-4 max-w-4xl mx-auto mb-16 gap-3">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-white text-3xl md:text-[35px] leading-tight font-normal"
           style={{ fontFamily: 'var(--font-rufina)' }}
         >
           Areas of Expertise
-        </h2>
-        <p 
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
           className="text-white/80 text-xl md:text-[25px] leading-snug md:leading-[31px] font-normal"
           style={{ fontFamily: 'var(--font-rufina)' }}
         >
           A multidisciplinary background spanning product design, product strategy, research, growth, and execution.
-        </p>
-      </motion.div>
+        </motion.p>
+      </div>
 
       {/* Expertise Cards Marquee */}
       <motion.div 

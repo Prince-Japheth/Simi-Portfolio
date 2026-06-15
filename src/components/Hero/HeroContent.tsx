@@ -15,7 +15,7 @@ export default function HeroContent({ scrollProgress }: { scrollProgress: Motion
       if (window.innerWidth < 768) {
         setMaxScale((window.innerWidth * 0.90) / 198); // 90% of screen width
         setMaxOffsets({ hi: -20, simi: 20 }); // Extremely tight gap on mobile
-        setScrollEnd(0.15); // Complete scaling much faster on mobile
+        setScrollEnd(0.25); // Complete scaling proportionally on 120vh track
       } else {
         setMaxScale(5.5);
         setMaxOffsets({ hi: -90, simi: 100 });
