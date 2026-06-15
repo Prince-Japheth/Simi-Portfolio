@@ -63,7 +63,7 @@ export default function HeroSectionsShowcase() {
         className="relative z-10 w-full flex-none md:flex-1 flex items-center justify-center"
       >
         <motion.div 
-          className="relative w-full max-w-[100vw] h-[220px] md:h-[648px] flex items-center justify-center touch-pan-y"
+          className="relative w-full max-w-[100vw] h-[160px] md:h-[648px] flex items-center justify-center touch-pan-y"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
@@ -97,7 +97,7 @@ export default function HeroSectionsShowcase() {
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                  className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] h-[220px] md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
+                  className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] h-[160px] md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
                     isActive ? 'border-opacity-100' : 'border-opacity-50'
                   }`}
                   onClick={() => setActiveIndex(index)}
