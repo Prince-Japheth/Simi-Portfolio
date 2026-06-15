@@ -46,7 +46,7 @@ export default function MobileScreensSection() {
             const mobileX = isMobile ? (index % 2 === 0 ? -100 : 100) : 0;
             return (
               <motion.div
-                key={screen.id}
+                key={`${screen.id}-${isMobile}`}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50, x: mobileX }}
                 whileInView={{ opacity: 1, y: 0, x: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
