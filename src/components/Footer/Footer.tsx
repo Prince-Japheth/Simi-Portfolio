@@ -1,6 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Logo from '../Navbar/Logo';
+import localFont from 'next/font/local';
+
+const sora = localFont({ src: '../../../public/fonts/Sora/Sora-VariableFont_wght.ttf' });
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -20,11 +24,10 @@ export default function Footer() {
           
           {/* Column 1: Logo & Tagline */}
           <div className="flex flex-col items-start gap-[15px] w-full md:w-[369px]">
-            {/* Logo placeholder - using text to mimic the SMO group */}
-            <div className="flex items-center gap-1 font-bold text-[30px] tracking-widest text-[#FF7418]">
-              SMO
+            <div className="h-[31px] w-[63px] shrink-0">
+              <Logo />
             </div>
-            <p className="text-white text-[22px] leading-[28px]">
+            <p className={`text-white text-[22px] leading-[28px] ${sora.className}`} style={{ fontFamily: sora.style.fontFamily }}>
               Building products with clarity, purpose, and intention.
             </p>
           </div>
@@ -51,22 +54,20 @@ export default function Footer() {
               <h3 className="text-white font-semibold text-[20px] leading-[24px]">
                 Contact
               </h3>
-              <div className="flex flex-row items-center gap-2">
-                <div className="flex items-center justify-center bg-[#E7E7E7] border-[3px] border-[#FF7112] rounded-[20px] h-[72px] flex-1 px-4">
-                  <span className="text-black font-medium text-[15px] text-center break-all">
-                    Therealsimi.mo@gmail.com
-                  </span>
-                </div>
+              <div className="flex flex-row items-center justify-between bg-[#E7E7E7] border-[3px] border-[#FF7112] rounded-[20px] h-[64px] md:h-[72px] w-full pl-4 md:pl-6 overflow-hidden">
+                <span className="text-black font-medium text-[13px] md:text-[15px] whitespace-nowrap tracking-tight truncate">
+                  Therealsimi.mo@gmail.com
+                </span>
                 <button 
                   onClick={handleCopy}
-                  className="w-[116px] h-[72px] rounded-[20px] border border-[#FF7418] flex items-center justify-center shrink-0 transition-opacity hover:opacity-80 relative"
+                  className="w-[80px] md:w-[116px] h-full flex items-center justify-center shrink-0 transition-opacity hover:opacity-80 relative"
                   style={{ background: 'linear-gradient(139.82deg, #FF7418 50.22%, #823B0C 152.6%, #000000 258.99%)' }}
                   aria-label="Copy email"
                 >
                   {copied ? (
-                    <span className="text-white font-semibold">Copied!</span>
+                    <span className="text-white font-semibold text-[12px] md:text-[16px]">Copied!</span>
                   ) : (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
