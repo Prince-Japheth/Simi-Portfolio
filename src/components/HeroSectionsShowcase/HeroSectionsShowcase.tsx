@@ -41,7 +41,7 @@ export default function HeroSectionsShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="relative z-10 text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-8 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
+        className="relative z-10 text-[48px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-8 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
         style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
       >
         Hero Sections
