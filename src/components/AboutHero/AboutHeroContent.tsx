@@ -41,7 +41,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
 
   return (
     <div className="absolute inset-0 z-10 flex flex-col items-center pointer-events-none select-none">
-      <div className="relative w-full max-w-[1512px] h-full mx-auto max-md:flex max-md:flex-col max-md:justify-between max-md:items-center max-md:py-[140px] max-md:px-6">
+      <div className="relative w-full max-w-[1512px] h-full mx-auto max-md:flex max-md:flex-col max-md:justify-between max-md:items-center max-md:pt-[120px] max-md:pb-[80px] max-md:px-6">
         
         {/* Text Top Left */}
         <motion.div

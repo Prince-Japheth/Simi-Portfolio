@@ -18,7 +18,7 @@ export default function AboutHeroSection() {
       className="relative w-full flex flex-col bg-[#030303] select-none overflow-visible"
     >
       <div className="relative w-full h-[150vh] md:h-[400vh] z-10">
-        <div className="sticky top-0 w-full h-[100vh] min-h-[1100px] max-md:min-h-[600px] overflow-visible flex flex-col items-center justify-start">
+        <div className="sticky top-0 w-full h-[100vh] min-h-[1100px] max-md:min-h-[750px] overflow-visible flex flex-col items-center justify-start">
           <HeroBackground scrollProgress={scrollYProgress} />
           <AboutHeroContent scrollProgress={scrollYProgress} />
         </div>

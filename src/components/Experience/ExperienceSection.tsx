@@ -25,7 +25,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section className="relative w-full min-h-[990px] flex items-center justify-center py-[100px] bg-[#030303] overflow-hidden" id="experience">
+    <section className="relative w-full min-h-[990px] flex flex-col items-center justify-center py-[100px] max-md:py-[60px] max-md:min-h-0 bg-[#030303] overflow-hidden" id="experience">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
         <video
@@ -39,6 +39,18 @@ export default function ExperienceSection() {
           <source src="/herobg.mp4" type="video/mp4" />
         </video>
       </div>
+
+      {/* Mobile Title */}
+      <motion.h2 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="relative z-10 md:hidden w-full text-center text-[#FFFFFF] text-[44px] leading-[60px] mb-10 whitespace-nowrap font-rubik-vinyl"
+        style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
+      >
+        Experiences
+      </motion.h2>
 
       {/* Grid */}
       <div className="relative z-10 w-full max-w-[1080px] mx-auto px-4 grid grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[31px] justify-items-center">
