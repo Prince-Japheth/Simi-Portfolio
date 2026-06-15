@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
+import localFont from 'next/font/local';
+
+const sora = localFont({ src: '../../../public/fonts/Sora/Sora-VariableFont_wght.ttf' });
 
 export default function ProcessSection() {
   const steps = [
@@ -28,7 +30,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="relative w-full py-20 md:py-32 bg-[#030303] overflow-hidden">
+    <section className={`relative w-full py-20 md:py-32 bg-[#030303] overflow-hidden ${sora.className}`} style={{ fontFamily: sora.style.fontFamily }}>
       <div className="w-full max-w-[1200px] mx-auto px-6 md:px-8 flex flex-col gap-12 md:gap-16">
         
         {/* Section Title */}
@@ -51,19 +53,21 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-              className="flex flex-col gap-6"
+              className="flex flex-row items-end justify-between gap-4 md:gap-8 w-full"
             >
-              <div className="flex flex-col">
-                <span className="text-[#FF7112] text-[30px] leading-[38px]">{step.num}</span>
-                <h4 className="text-white text-[30px] leading-[38px]">{step.title}</h4>
+              <div className="flex flex-col gap-6 max-w-[500px]">
+                <div className="flex flex-col">
+                  <span className="text-[#FF7112] text-[30px] leading-[38px]">{step.num}</span>
+                  <h4 className="text-white text-[30px] leading-[38px]">{step.title}</h4>
+                </div>
+                
+                <p className="text-white text-[18px] leading-[28px] opacity-90">
+                  {step.desc}
+                </p>
               </div>
-              
-              <p className="text-white text-[18px] leading-[28px] opacity-90 max-w-[500px]">
-                {step.desc}
-              </p>
 
               {/* Decorative Line */}
-              <div className="w-[100px] md:w-[153px] h-[1px] bg-[#FF7112] mt-2 opacity-80" />
+              <div className="w-[1px] h-[100px] md:h-[153px] bg-[#FF7112] shrink-0 opacity-80" />
             </motion.div>
           ))}
         </div>
