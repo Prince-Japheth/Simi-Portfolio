@@ -60,8 +60,8 @@ export default function Footer() {
                 </span>
                 <button 
                   onClick={handleCopy}
-                  className="w-[80px] md:w-[116px] h-full flex items-center justify-center shrink-0 transition-opacity hover:opacity-80 relative border-l-[3px] border-[#FF7112]"
-                  style={{ background: 'linear-gradient(139.82deg, #FF7418 50.22%, #823B0C 152.6%, #000000 258.99%)' }}
+                  className="w-[80px] md:w-[116px] h-full flex items-center justify-center shrink-0 transition-opacity hover:opacity-80 relative rounded-l-[20px]"
+                  style={{ background: '#FF7112' }}
                   aria-label="Copy email"
                 >
                   {copied ? (

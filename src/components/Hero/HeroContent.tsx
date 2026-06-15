@@ -53,16 +53,15 @@ export default function HeroContent({ scrollProgress }: { scrollProgress: Motion
 
         {/* "Hi, I am" */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 3.0, ease: "easeOut" }}
           className="absolute left-1/2 -translate-x-1/2 top-[295px] max-md:top-[230px] z-20"
         >
           <motion.p
             style={{ y: hiY, scale: hiScale }}
-            className="whitespace-nowrap text-center font-rufina font-normal text-white text-[35px] leading-[43px] origin-bottom"
+            className="whitespace-nowrap text-center font-rufina font-normal text-white text-[35px] leading-[43px] origin-bottom flex gap-[8px]"
           >
-            Hi, I am
+            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 2.7 }}>Hi,</motion.span>
+            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 3.0 }}>I</motion.span>
+            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 3.3 }}>am</motion.span>
           </motion.p>
         </motion.div>
 
