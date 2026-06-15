@@ -10,10 +10,25 @@ export default function ShowcaseCard({ scrollProgress }: { scrollProgress: Motio
   const [imageError, setImageError] = useState(false);
   const springConfig = { damping: 26, stiffness: 100, mass: 0.9 };
 
+  const [scrollRange, setScrollRange] = React.useState([0.35, 0.65]);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setScrollRange([0.15, 0.45]); // Trigger much earlier on mobile
+      } else {
+        setScrollRange([0.35, 0.65]);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Glass card enters from bottom
-  const rawCardOpacity = useTransform(scrollProgress, [0.35, 0.65], [0, 1]);
+  const rawCardOpacity = useTransform(scrollProgress, scrollRange, [0, 1]);
   const cardOpacity = useSpring(rawCardOpacity, springConfig);
-  const rawCardY = useTransform(scrollProgress, [0.35, 0.65], [150, 0]);
+  const rawCardY = useTransform(scrollProgress, scrollRange, [150, 0]);
   const cardY = useSpring(rawCardY, springConfig);
   
   if (imageError) {
