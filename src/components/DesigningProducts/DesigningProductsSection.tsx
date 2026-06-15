@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 export default function DesigningProductsSection() {
+  const dispatch = useAppDispatch();
   const topMarqueeImages = [
     '/images/designing-products/040cc821f200d938c272d3c645b0e7dd3a8a421f.avif',
     '/images/designing-products/079aa6ed1b5bcaf491d65ff13537adfbafad8031.avif',
@@ -246,8 +249,9 @@ export default function DesigningProductsSection() {
               return (
                 <div 
                   key={i} 
-                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none`}
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none cursor-pointer`}
                   style={{ backgroundImage: `url('${img}')` }}
+                  onClick={() => dispatch(openImageViewer({ src: img, alt: 'Product Design Showcase' }))}
                 />
               );
             })}
@@ -271,8 +275,9 @@ export default function DesigningProductsSection() {
               return (
                 <div 
                   key={i} 
-                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none`}
+                  className={`w-[285px] h-[290px] rounded-[12px] border border-[#D35A05] bg-cover ${bgPositionClass} shrink-0 select-none cursor-pointer`}
                   style={{ backgroundImage: `url('${img}')` }}
+                  onClick={() => dispatch(openImageViewer({ src: img, alt: 'Product Design Showcase' }))}
                 />
               );
             })}

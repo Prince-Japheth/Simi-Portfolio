@@ -3,8 +3,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 export default function MobileScreensSection() {
+  const dispatch = useAppDispatch();
   const screens = [
     { id: 1, image: '/images/mobile-screens/screen-1.avif' },
     { id: 2, image: '/images/mobile-screens/screen-2.avif' },
@@ -39,13 +42,18 @@ export default function MobileScreensSection() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 + (index * 0.1) }}
               className={`relative w-full h-[500px] md:max-w-none md:w-[300px] md:h-[600px] shrink-0 ${index > 0 ? 'max-md:mt-24' : ''}`}
             >
-              <Image
-                src={screen.image}
-                alt={`Mobile Screen ${screen.id}`}
-                fill
-                className={`object-contain ${screen.id === 2 ? 'scale-[1.5] max-md:translate-x-[3%] md:scale-[1.16]' : screen.id === 3 ? 'scale-[1.45] md:scale-[1.16]' : screen.id === 1 ? 'scale-[1.3] md:scale-[1.12]' : 'scale-[1.45] md:scale-100'}`}
-                sizes="(max-width: 768px) 100vw, 300px"
-              />
+              <div 
+                className="w-full h-full relative cursor-pointer"
+                onClick={() => dispatch(openImageViewer({ src: screen.image, alt: `Mobile Screen ${screen.id}` }))}
+              >
+                <Image
+                  src={screen.image}
+                  alt={`Mobile Screen ${screen.id}`}
+                  fill
+                  className={`object-contain ${screen.id === 2 ? 'scale-[1.5] max-md:translate-x-[3%] md:scale-[1.16]' : screen.id === 3 ? 'scale-[1.45] md:scale-[1.16]' : screen.id === 1 ? 'scale-[1.3] md:scale-[1.12]' : 'scale-[1.45] md:scale-100'}`}
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </div>
             </motion.div>
           ))}
         </div>

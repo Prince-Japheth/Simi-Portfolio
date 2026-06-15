@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import uiReducer from './slices/uiSlice';
+import imageViewerReducer from './slices/imageViewerSlice';
 
 export const store = configureStore({
   reducer: {
     ui: uiReducer,
+    imageViewer: imageViewerReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 const SHOWCASE_ITEMS = [
   { id: 1, title: 'Paymyfees', image: '/images/showcase/1f5891bc17c7fde57be5030a5380dce3dc730c41.avif' },
@@ -13,6 +15,7 @@ const SHOWCASE_ITEMS = [
 
 export default function HeroSectionsShowcase() {
   const [activeIndex, setActiveIndex] = useState(4); // Default to 7bb6e2a46a621d7e05ec2bf5d36fe6e346ff64ab.avif
+  const dispatch = useAppDispatch();
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
@@ -100,7 +103,13 @@ export default function HeroSectionsShowcase() {
                   className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] h-[160px] md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
                     isActive ? 'border-opacity-100' : 'border-opacity-50'
                   }`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (isActive) {
+                      dispatch(openImageViewer({ src: item.image, alt: item.title }));
+                    } else {
+                      setActiveIndex(index);
+                    }
+                  }}
                 >
                   <div 
                     className="w-full h-full bg-[length:100%_auto] bg-top bg-no-repeat bg-[#1A1A1A]"

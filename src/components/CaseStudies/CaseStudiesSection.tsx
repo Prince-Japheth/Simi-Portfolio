@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 const CASE_STUDIES = [
   { id: 1, title: 'Homify Project', image: '/images/case-studies/homifyproject.avif' },
@@ -12,6 +14,7 @@ const CASE_STUDIES = [
 export default function CaseStudiesSection() {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isInteracted, setIsInteracted] = useState(false);
+  const dispatch = useAppDispatch();
 
   const nextSlide = () => {
     setIsInteracted(true);
@@ -100,7 +103,13 @@ export default function CaseStudiesSection() {
                   className={`absolute w-[75vw] md:w-[667px] h-[300px] md:h-[452px] rounded-[30px] border-2 border-transparent overflow-hidden cursor-pointer ${
                     isActive ? 'border-opacity-100 shadow-2xl' : 'border-opacity-50'
                   }`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (isActive && item.image) {
+                      dispatch(openImageViewer({ src: item.image, alt: item.title }));
+                    } else {
+                      setActiveIndex(index);
+                    }
+                  }}
                 >
                   <div 
                     className="w-full h-full bg-cover bg-center bg-[#191919] flex items-center justify-center"

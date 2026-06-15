@@ -5,8 +5,11 @@ import Image from 'next/image';
 import { motion, MotionValue, useTransform, useSpring } from 'framer-motion';
 import ErrorState from '@/components/ErrorState/ErrorState';
 import { logger } from '@/lib/logger';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 export default function ShowcaseCard({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
+  const dispatch = useAppDispatch();
   const [imageError, setImageError] = useState(false);
   const springConfig = { damping: 26, stiffness: 100, mass: 0.9 };
 
@@ -45,12 +48,13 @@ export default function ShowcaseCard({ scrollProgress }: { scrollProgress: Motio
         >
           <div className="relative w-full h-full">
             <Image
-              src="/simihero.avif"
+              src="/simihero.JPG"
               alt="Simi Portfolio Showcase"
               fill
               priority
               sizes="(max-width: 1192px) 95vw, 1192px"
-              className="object-cover object-top"
+              className="object-cover object-top cursor-pointer"
+              // onClick={() => dispatch(openImageViewer({ src: '/simihero.avif', alt: 'Simi Portfolio Showcase' }))}
               onError={() => setImageError(true)}
             />
           </div>

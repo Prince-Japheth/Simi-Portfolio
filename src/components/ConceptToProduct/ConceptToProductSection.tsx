@@ -4,10 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 const russoOne = localFont({ src: '../../../public/fonts/Russo_One/RussoOne-Regular.ttf' });
 
 export default function ConceptToProductSection() {
+  const dispatch = useAppDispatch();
   return (
     <section 
       className="relative w-full md:min-h-[1099px] flex flex-col items-center py-20 overflow-hidden"
@@ -37,7 +40,8 @@ export default function ConceptToProductSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full aspect-[1012/870]"
+          className="relative w-full aspect-[1012/870] cursor-pointer"
+          onClick={() => dispatch(openImageViewer({ src: "/images/concept-to-product/Group%201000005866.avif", alt: "Concept to Product Flow" }))}
         >
           <Image
             src="/images/concept-to-product/Group%201000005866.avif"

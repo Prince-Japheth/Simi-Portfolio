@@ -38,6 +38,7 @@ const rubikVinyl = localFont({
 });
 
 import SiteLoader from '@/components/Loader/SiteLoader';
+import ImageViewerModal from '@/components/UI/ImageViewerModal/ImageViewerModal';
 
 export const metadata: Metadata = {
   title: 'Simi | Product & UX Designer Portfolio',
@@ -77,6 +78,7 @@ export default function RootLayout({
         <SiteLoader />
         <StoreProvider>
           <ErrorBoundary>{children}</ErrorBoundary>
+          <ImageViewerModal />
         </StoreProvider>
       </body>
     </html>

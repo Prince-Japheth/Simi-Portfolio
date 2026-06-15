@@ -40,9 +40,9 @@ export default function Header() {
       className="fixed left-0 right-0 top-[19px] z-50 mx-auto flex w-full max-w-[1512px] flex-col md:flex-row items-center justify-between px-6 md:px-[199px] pointer-events-none"
     >
       <div className="flex w-full md:w-auto items-center justify-between pointer-events-auto">
-        <div className="h-[31px] w-[63px] shrink-0">
+        <Link href="/" className="h-[31px] w-[63px] shrink-0 block cursor-pointer">
           <Logo />
-        </div>
+        </Link>
         
         <button 
           className="md:hidden flex items-center justify-center p-2 text-white bg-black/20 backdrop-blur-md rounded-md border border-white/20"

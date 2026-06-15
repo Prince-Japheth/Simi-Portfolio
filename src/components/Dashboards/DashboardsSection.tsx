@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppDispatch } from '@/store';
+import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 const SHOWCASE_ITEMS = [
   { id: 1, title: 'Dashboard 1', image: '/images/dashboards/105a71f43833b98d54c3b2d762fa175de06f972b.avif' },
@@ -14,6 +16,7 @@ const SHOWCASE_ITEMS = [
 export default function DashboardsSection() {
   const [activeIndex, setActiveIndex] = useState(4);
   const [isInteracted, setIsInteracted] = useState(false);
+  const dispatch = useAppDispatch();
 
   const nextSlide = () => {
     setIsInteracted(true);
@@ -96,7 +99,13 @@ export default function DashboardsSection() {
                   className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] h-[220px] md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
                     isActive ? 'border-opacity-100' : 'border-opacity-50'
                   }`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (isActive) {
+                      dispatch(openImageViewer({ src: item.image, alt: item.title }));
+                    } else {
+                      setActiveIndex(index);
+                    }
+                  }}
                 >
                   <div 
                     className="w-full h-full bg-[length:100%_auto] bg-top bg-no-repeat bg-[#1A1A1A]"

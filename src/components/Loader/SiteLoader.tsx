@@ -8,10 +8,10 @@ export default function SiteLoader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Hide loader after 2.2 seconds to allow the logo animation to play out
+    // Hide loader quickly to fix loading time complaint
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2200);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,14 +35,14 @@ export default function SiteLoader() {
           key="site-loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#030303] pointer-events-auto"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0, filter: 'blur(10px)' }}
             animate={{ scale: 1.5, opacity: 1, filter: 'blur(0px)' }}
             transition={{ 
-              duration: 1.2, 
+              duration: 0.6, 
               ease: [0.16, 1, 0.3, 1], // easeOutExpo
             }}
           >
