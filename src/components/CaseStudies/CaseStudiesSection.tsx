@@ -60,8 +60,11 @@ export default function CaseStudiesSection() {
         className="relative z-10 w-full flex-none md:flex-1 flex flex-col items-center justify-center"
       >
         <motion.div 
-          className="relative w-full max-w-[100vw] h-[350px] md:h-[500px] flex items-center justify-center mb-4 md:mb-8"
-          onPanEnd={(e, info) => {
+          className="relative w-full max-w-[100vw] h-[350px] md:h-[500px] flex items-center justify-center mb-4 md:mb-8 touch-pan-y"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(e, info) => {
             if (info.offset.x < -50) nextSlide();
             if (info.offset.x > 50) prevSlide();
           }}
