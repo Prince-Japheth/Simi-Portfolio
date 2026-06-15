@@ -19,7 +19,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
         setMaxScale(1.8);
         setScrollEnd(0.25);
       } else {
-        setMaxScale(2.2);
+        setMaxScale(3.2);
         setScrollEnd(0.4);
       }
     };
