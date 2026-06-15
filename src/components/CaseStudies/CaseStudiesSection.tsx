@@ -10,22 +10,26 @@ const CASE_STUDIES = [
 ];
 
 export default function CaseStudiesSection() {
-  const [activeIndex, setActiveIndex] = useState(1); // Default to Scheweppes
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [isInteracted, setIsInteracted] = useState(false);
 
   const nextSlide = () => {
+    setIsInteracted(true);
     setActiveIndex((prev) => (prev + 1) % CASE_STUDIES.length);
   };
 
   const prevSlide = () => {
+    setIsInteracted(true);
     setActiveIndex((prev) => (prev - 1 + CASE_STUDIES.length) % CASE_STUDIES.length);
   };
 
   useEffect(() => {
+    if (isInteracted) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % CASE_STUDIES.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInteracted]);
 
   return (
     <section 
@@ -64,6 +68,7 @@ export default function CaseStudiesSection() {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
+          onDragStart={() => setIsInteracted(true)}
           onDragEnd={(e, info) => {
             if (info.offset.x < -50) nextSlide();
             if (info.offset.x > 50) prevSlide();

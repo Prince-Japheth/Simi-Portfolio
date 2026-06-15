@@ -12,22 +12,26 @@ const SHOWCASE_ITEMS = [
 ];
 
 export default function DashboardsSection() {
-  const [activeIndex, setActiveIndex] = useState(4); // Default to f09a94a79d3326567953f52c06428ef5d2087dc6.avif // Default to the second item
+  const [activeIndex, setActiveIndex] = useState(4);
+  const [isInteracted, setIsInteracted] = useState(false);
 
   const nextSlide = () => {
+    setIsInteracted(true);
     setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
   };
 
   const prevSlide = () => {
+    setIsInteracted(true);
     setActiveIndex((prev) => (prev - 1 + SHOWCASE_ITEMS.length) % SHOWCASE_ITEMS.length);
   };
 
   useEffect(() => {
+    if (isInteracted) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInteracted]);
 
   return (
     <section 
@@ -58,6 +62,7 @@ export default function DashboardsSection() {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
+          onDragStart={() => setIsInteracted(true)}
           onDragEnd={(e, info) => {
             if (info.offset.x < -50) nextSlide();
             if (info.offset.x > 50) prevSlide();
