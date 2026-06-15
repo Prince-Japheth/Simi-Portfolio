@@ -14,8 +14,8 @@ export default function HeroBackground({ scrollProgress }: { scrollProgress: Mot
         playsInline
         className="w-full h-full object-cover object-center"
       >
-        <source src="/herobg.mov" type="video/quicktime" />
-        <source src="/herobg.mov" type="video/mp4" />
+        <source src="/herobg.webm" type="video/quicktime" />
+        <source src="/herobg.webm" type="video/mp4" />
       </video>
     </div>
   );

@@ -85,11 +85,11 @@ export default function DesigningProductsSection() {
 
         {/* Subtitle */}
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="absolute left-1/2 -translate-x-1/2 top-[248px] w-[90vw] md:w-[1043px] text-center text-[#FFFFFF] text-[16px] md:text-[20px] leading-[25px] font-rufina font-normal"
+          className="absolute left-1/2 -translate-x-1/2 top-[180px] md:top-[248px] w-[90vw] md:w-[1043px] text-center text-[#FFFFFF] text-[16px] md:text-[20px] leading-[25px] font-rufina font-normal"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           I design digital experiences that connect user needs, business goals, and product growth.
         </motion.p>
@@ -103,7 +103,7 @@ export default function DesigningProductsSection() {
           className="absolute left-0 top-[335px] w-full overflow-hidden h-[290px]"
         >
           <motion.div
-            className="flex flex-row items-center gap-[40px] px-[20px] w-max"
+            className="flex flex-row items-center gap-[40px] w-max"
             animate={{ x: ['0%', '-50%'] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >
@@ -126,7 +126,7 @@ export default function DesigningProductsSection() {
           className="absolute left-0 top-[672px] w-full overflow-hidden h-[290px]"
         >
           <motion.div
-            className="flex flex-row items-center gap-[40px] px-[20px] w-max"
+            className="flex flex-row items-center gap-[40px] w-max"
             animate={{ x: ['-50%', '0%'] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
           >

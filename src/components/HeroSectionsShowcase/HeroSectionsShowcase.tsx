@@ -24,7 +24,7 @@ export default function HeroSectionsShowcase() {
 
   return (
     <section 
-      className="relative w-full min-h-[1056px] flex flex-col items-center py-20 overflow-hidden"
+      className="relative w-full md:min-h-[1056px] flex flex-col items-center py-20 overflow-hidden"
       style={{
         background: 'linear-gradient(0deg, #D5543C, #D5543C), url(/DEC_SG_Sunset_001.jpg), linear-gradient(23.49deg, #151515 25.39%, #D5543C 88.6%)',
         backgroundBlendMode: 'color, overlay, normal',
@@ -41,7 +41,7 @@ export default function HeroSectionsShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="relative z-10 text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-16 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
+        className="relative z-10 text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-8 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
         style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
       >
         Hero Sections
@@ -53,9 +53,15 @@ export default function HeroSectionsShowcase() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-        className="relative z-10 w-full flex-1 flex items-center justify-center"
+        className="relative z-10 w-full flex-none md:flex-1 flex items-center justify-center"
       >
-        <div className="relative w-full max-w-[100vw] h-[300px] md:h-[648px] flex items-center justify-center">
+        <motion.div 
+          className="relative w-full max-w-[100vw] h-[300px] md:h-[648px] flex items-center justify-center"
+          onPanEnd={(e, info) => {
+            if (info.offset.x < -50) nextSlide();
+            if (info.offset.x > 50) prevSlide();
+          }}
+        >
           <AnimatePresence mode="popLayout">
             {SHOWCASE_ITEMS.map((item, index) => {
               const isActive = index === activeIndex;
@@ -96,7 +102,7 @@ export default function HeroSectionsShowcase() {
               );
             })}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Controls */}
@@ -105,7 +111,7 @@ export default function HeroSectionsShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-        className="relative z-10 mt-16 md:mt-24 flex flex-row items-center gap-[23px]"
+        className="relative z-10 mt-8 md:mt-24 flex flex-row items-center gap-[23px]"
       >
         {/* Prev Button */}
         <button 

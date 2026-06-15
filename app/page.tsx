@@ -1,7 +1,11 @@
 import Header from '@/components/Navbar/Header';
 import HeroSection from '@/components/Hero/HeroSection';
+import ExpertiseSection from '@/components/Expertise/ExpertiseSection';
 import DesigningProductsSection from '@/components/DesigningProducts/DesigningProductsSection';
 import HeroSectionsShowcase from '@/components/HeroSectionsShowcase/HeroSectionsShowcase';
+import DashboardsSection from '@/components/Dashboards/DashboardsSection';
+import MobileScreensSection from '@/components/MobileScreens/MobileScreensSection';
+import CaseStudiesSection from '@/components/CaseStudies/CaseStudiesSection';
 
 export default function Home() {
   return (
@@ -9,8 +13,12 @@ export default function Home() {
       <Header />
       <main className="w-full">
         <HeroSection />
+        <ExpertiseSection />
         <DesigningProductsSection />
         <HeroSectionsShowcase />
+        <DashboardsSection />
+        <MobileScreensSection />
+        <CaseStudiesSection />
       </main>
     </div>
   );
