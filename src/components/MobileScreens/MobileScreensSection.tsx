@@ -30,27 +30,15 @@ export default function MobileScreensSection() {
       <div className="w-full max-w-[1512px] mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-6 lg:gap-8 items-center md:items-end">
           {screens.map((screen, index) => (
-            <motion.div
+            <motion.img
               key={screen.id}
+              src={screen.image}
+              alt={`Mobile Screen ${screen.id}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 + (index * 0.1) }}
-              className={`w-full max-w-[300px] h-[500px] ${screen.width} ${screen.height} rounded-[30px] bg-[#1A1A1A] border-2 border-[#1A1A1A]/50 bg-cover bg-center shrink-0 shadow-xl`}
-              style={{
-                backgroundImage: screen.image ? `url('${screen.image}')` : 'none',
-              }}
-            >
-              {/* Fallback state when no image is present */}
-              {!screen.image && (
-                <div className="w-full h-full flex flex-col items-center justify-center text-white/20">
-                  <svg className="w-12 h-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm uppercase tracking-widest">Mobile Screen</span>
-                </div>
-              )}
-            </motion.div>
+              className={`w-full max-w-[280px] md:max-w-none ${screen.width} ${screen.height} object-contain shrink-0`}
+            />
           ))}
         </div>
       </div>
