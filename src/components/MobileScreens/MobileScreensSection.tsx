@@ -37,14 +37,14 @@ export default function MobileScreensSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 + (index * 0.1) }}
-              className="relative w-full max-w-[280px] h-[550px] md:max-w-none md:w-[300px] md:h-[600px] shrink-0"
+              className={`relative w-full h-[500px] md:max-w-none md:w-[300px] md:h-[600px] shrink-0 ${index > 0 ? 'max-md:mt-24' : ''}`}
             >
               <Image
                 src={screen.image}
                 alt={`Mobile Screen ${screen.id}`}
                 fill
-                className={`object-contain ${screen.id === 2 || screen.id === 3 ? 'scale-[1.16]' : screen.id === 1 ? 'scale-[1.12]' : ''}`}
-                sizes="(max-width: 768px) 280px, 300px"
+                className={`object-contain ${screen.id === 2 ? 'scale-[1.55] max-md:-translate-x-[12%] md:scale-[1.16]' : screen.id === 3 ? 'scale-[1.45] md:scale-[1.16]' : screen.id === 1 ? 'scale-[1.3] md:scale-[1.12]' : 'scale-[1.5] md:scale-100'}`}
+                sizes="(max-width: 768px) 100vw, 300px"
               />
             </motion.div>
           ))}
