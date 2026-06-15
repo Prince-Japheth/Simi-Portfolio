@@ -55,7 +55,7 @@ export default function AboutStatsSection() {
         </div>
 
         <div className="flex flex-col items-center gap-[8px]">
-          <span className="font-bold text-[46px] leading-[1.2] text-[#FCFCFD] text-center whitespace-nowrap">
+          <span className="font-bold text-[40px] leading-[1.2] text-[#FCFCFD] text-center whitespace-nowrap">
             Cross Functional
           </span>
           <span className="font-light text-[22px] leading-[1.2] text-[#ECEDEF] text-center">Design × Product × Operations</span>
