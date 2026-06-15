@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function ExperienceSection() {
   const experiences = [
@@ -31,11 +32,20 @@ export default function ExperienceSection() {
       </div>
 
       {/* Grid */}
-      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[31px] justify-items-center">
-        {experiences.map((exp) => (
-          <Link key={exp.id} href={`/experience/${exp.id}`} className="block relative w-full max-w-[339px] h-[284px] rounded-[15px] border border-[#D35A05] overflow-hidden group">
-            <Image src={exp.image} alt={exp.id} fill className="object-cover z-0" />
-          </Link>
+      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-4 grid grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[31px] justify-items-center">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={exp.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
+            className="w-full flex justify-center"
+          >
+            <Link href={`/experience/${exp.id}`} className="block relative w-full max-w-[339px] h-[160px] sm:h-[200px] md:h-[284px] rounded-[10px] md:rounded-[15px] border border-[#D35A05] overflow-hidden group">
+              <Image src={exp.image} alt={exp.id} fill className="object-cover z-0" />
+            </Link>
+          </motion.div>
         ))}
       </div>
     </section>
