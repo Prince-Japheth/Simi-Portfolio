@@ -33,10 +33,10 @@ export default function ExperienceSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center"
+        className="w-full h-full object-cover object-center scale-[1.05]"
         >
-          <source src="/herobg.webm" type="video/webm" />
-          <source src="/herobg.mp4" type="video/mp4" />
+               <source src="/herobg.webm" type="video/quicktime" />
+                  <source src="/herobg.webm" type="video/mp4" />
         </video>
       </div>
 
