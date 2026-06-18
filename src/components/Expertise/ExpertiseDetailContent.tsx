@@ -55,35 +55,39 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
     >
       {/* Header with Back Button, Title, and Subtitle */}
       <div className="relative z-10 w-full max-w-[1043px] mx-auto px-4 mb-8 md:mb-4">
-        <div className="flex flex-row items-center gap-4 w-full">
-          <BackButton className="shrink-0 w-9 h-9 md:w-auto md:h-auto" />
-          <div className="flex flex-col items-center gap-[10px] flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', damping: 20, stiffness: 100 }}
-              className="flex flex-col items-center gap-[10px] w-full"
-            >
-              <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.15, type: 'spring', damping: 15, stiffness: 120 }}
-                className="font-rufina font-normal text-[20px] md:text-[35px] leading-[26px] md:leading-[43px] text-white text-center w-full"
+        <div className="flex flex-col gap-2 w-full">
+          {/* Row with Back Button and Title */}
+          <div className="flex flex-row items-center gap-4 w-full">
+            <BackButton className="shrink-0 w-7 h-7 md:w-9 md:h-9" />
+            <div className="flex flex-col items-center gap-0 flex-1">
+              <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: 'spring', damping: 20, stiffness: 100 }}
+                className="flex flex-col items-center gap-[10px] w-full"
               >
-                {data.title}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.25, duration: 0.6 }}
-                className="font-rufina font-normal text-[14px] md:text-[25px] leading-[18px] md:leading-[31px] text-white text-center w-full"
-              >
-                {data.subtitle}
-              </motion.p>
-            </motion.div>
+                <motion.h1
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.15, type: 'spring', damping: 15, stiffness: 120 }}
+                  className="font-rufina font-normal text-[20px] md:text-[35px] leading-[26px] md:leading-[43px] text-white text-center w-full whitespace-nowrap overflow-hidden text-ellipsis"
+                >
+                  {data.title}
+                </motion.h1>
+              </motion.div>
+            </div>
+            {/* Spacer for balance */}
+            <div className="shrink-0 w-7 h-7 md:w-9 md:h-9" />
           </div>
-          {/* Spacer for balance */}
-          <div className="shrink-0 w-9 h-9 md:w-auto md:h-auto" />
+          {/* Subtitle below */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.6 }}
+            className="font-rufina font-normal text-[14px] md:text-[25px] leading-[18px] md:leading-[31px] text-white text-center w-full"
+          >
+            {data.subtitle}
+          </motion.p>
         </div>
       </div>
 
@@ -93,7 +97,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-        className="relative z-10 w-full flex-none md:flex-1 flex items-center justify-center"
+        className="relative z-10 w-full flex-none flex items-center justify-center"
       >
         {carouselType === 'ux-writing' ? (
           // UX Writing: Single item
@@ -104,7 +108,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
             }}
           >
             <div 
-              className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+              className="w-full h-full bg-cover bg-top bg-no-repeat bg-[#1A1A1A]"
               style={{ backgroundImage: `url('${data.showcaseImages[0]}')` }}
             />
           </motion.div>
@@ -158,7 +162,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                     }}
                   >
                     <div 
-                      className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+                      className="w-full h-full bg-cover bg-top bg-no-repeat bg-[#1A1A1A]"
                       style={{ backgroundImage: `url('${image}')` }}
                     />
                     {!isActive && <div className="absolute inset-0 bg-black/30 pointer-events-none" />}
@@ -212,7 +216,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                     }}
                   >
                     <div 
-                      className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+                      className="w-full h-full bg-cover bg-top bg-no-repeat bg-[#1A1A1A]"
                       style={{ backgroundImage: `url('${image}')` }}
                     />
                     {!isActive && <div className="absolute inset-0 bg-black/30 pointer-events-none" />}
@@ -281,7 +285,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                     }}
                   >
                     <div 
-                      className="w-full h-full bg-cover bg-center bg-no-repeat bg-[#1A1A1A]"
+                      className="w-full h-full bg-cover bg-top bg-no-repeat bg-[#1A1A1A]"
                       style={{ backgroundImage: `url('${image}')` }}
                     />
                     {!isActive && <div className="absolute inset-0 bg-black/30 pointer-events-none" />}
