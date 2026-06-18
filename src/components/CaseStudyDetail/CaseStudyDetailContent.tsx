@@ -160,7 +160,7 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ staggerChildren: 0.05 }}
-              className="font-rufina font-normal text-base md:text-[20px] leading-[25px] text-white text-justify"
+              className="font-sora font-normal text-base md:text-[20px] leading-[25px] text-white text-justify"
             >
               {data.description.split('. ').map((sentence, i) => (
                 <motion.span
