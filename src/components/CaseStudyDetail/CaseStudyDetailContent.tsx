@@ -96,32 +96,6 @@ function ClickableImage({
   );
 }
 
-function DecorativeShapes() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30 max-md:opacity-20">
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0], rotate: [0, 3, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute -left-[120px] top-[13px] w-[400px] md:w-[756px] h-[230px] md:h-[435px] bg-[#5A189A] max-md:scale-75"
-      />
-      <motion.div
-        animate={{ x: [0, -25, 0], y: [0, 15, 0], rotate: [180, 183, 180] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute right-[-80px] md:right-[100px] top-[280px] md:top-[395px] w-[400px] md:w-[756px] h-[230px] md:h-[435px] bg-[#FF9E00] rotate-180 max-md:scale-75"
-      />
-      <motion.div
-        animate={{ x: [0, 20, 0], y: [0, 25, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-        className="absolute left-[40px] md:left-[85px] -top-[60px] md:-top-[85px] w-[300px] md:w-[756px] h-[180px] md:h-[435px] bg-white max-md:scale-75"
-      />
-      <motion.div
-        animate={{ x: [0, -15, 0], y: [0, -18, 0], rotate: [180, 177, 180] }}
-        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute left-[120px] md:left-[564px] bottom-[80px] md:top-[493px] w-[350px] md:w-[756px] h-[200px] md:h-[435px] bg-white rotate-180 max-md:scale-75"
-      />
-    </div>
-  );
-}
 
 export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetailData }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -139,7 +113,6 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
       ref={containerRef}
       className="relative w-full min-h-screen pt-[120px] md:pt-[150px] pb-[80px] md:pb-[100px] bg-[#030303] overflow-hidden"
     >
-      <DecorativeShapes />
 
       <div className="relative z-10 w-full max-w-[1152px] mx-auto px-5 md:px-6">
         {/* Header: back button + centered title */}
@@ -156,14 +129,14 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.15, type: 'spring', damping: 15, stiffness: 120 }}
-            className="text-[28px] md:text-[35px] leading-tight text-white text-center capitalize px-12"
+            className="font-rufina font-normal text-[28px] md:text-[35px] leading-[43px] text-white text-center capitalize px-12"
           >
             {data.title}
           </motion.h1>
         </motion.div>
 
         {/* Main content: hero image + description */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-10 md:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-6 md:mb-8">
           <motion.div style={{ y: heroParallax }} className="w-full lg:w-[534px] shrink-0">
             <ClickableImage
               src={data.heroImage}
@@ -187,7 +160,7 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ staggerChildren: 0.05 }}
-              className="text-base md:text-[20px] leading-[25px] text-white text-justify"
+              className="font-rufina font-normal text-base md:text-[20px] leading-[25px] text-white text-justify"
             >
               {data.description.split('. ').map((sentence, i) => (
                 <motion.span
