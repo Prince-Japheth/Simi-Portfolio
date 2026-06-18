@@ -18,7 +18,7 @@ export default function ShowcaseCard({ scrollProgress }: { scrollProgress: Motio
   React.useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setScrollRange([0.35, 0.65]); 
+        setScrollRange([0.18, 0.42]);
       } else {
         setScrollRange([0.35, 0.65]);
       }

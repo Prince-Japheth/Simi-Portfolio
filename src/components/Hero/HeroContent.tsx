@@ -13,9 +13,9 @@ export default function HeroContent({ scrollProgress }: { scrollProgress: Motion
   React.useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setMaxScale((window.innerWidth * 0.90) / 198); // 90% of screen width
-        setMaxOffsets({ hi: -20, simi: 20 }); // Extremely tight gap on mobile
-        setScrollEnd(0.4); 
+        setMaxScale((window.innerWidth * 0.90) / 198);
+        setMaxOffsets({ hi: -20, simi: 20 });
+        setScrollEnd(0.22);
       } else {
         setMaxScale(5.5);
         setMaxOffsets({ hi: -90, simi: 100 });

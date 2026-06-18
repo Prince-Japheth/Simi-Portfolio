@@ -1,20 +1,19 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAppDispatch } from '@/store';
-import { openImageViewer } from '@/store/slices/imageViewerSlice';
 
 const CASE_STUDIES = [
-  { id: 1, title: 'Homify Project', image: '/images/case-studies/homifyproject.avif' },
-  { id: 2, title: 'Scheweppes Project', image: '/images/case-studies/ScheweppesProject.avif' },
-  { id: 3, title: 'Cardly Project', image: '/images/case-studies/cardly.avif' },
+  { id: 1, slug: 'homify', title: 'Homify Project', image: '/images/case-studies/homifyproject.avif' },
+  { id: 2, slug: 'scheweppes', title: 'Scheweppes Project', image: '/images/case-studies/ScheweppesProject.avif' },
+  { id: 3, slug: 'cardly', title: 'Cardly Project', image: '/images/case-studies/cardly.avif' },
 ];
 
 export default function CaseStudiesSection() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
   const [isInteracted, setIsInteracted] = useState(false);
-  const dispatch = useAppDispatch();
 
   const nextSlide = () => {
     setIsInteracted(true);
@@ -35,7 +34,7 @@ export default function CaseStudiesSection() {
   }, [isInteracted]);
 
   return (
-    <section 
+    <section
       className="relative w-full md:min-h-[972px] flex flex-col items-center py-20 overflow-hidden"
       style={{
         background: 'linear-gradient(0deg, #D5543C, #D5543C), linear-gradient(171.06deg, #151515 11.07%, #D5543C 113.91%)',
@@ -46,27 +45,25 @@ export default function CaseStudiesSection() {
     >
       <div className="absolute inset-0 bg-black/10 z-0"></div>
 
-      {/* Header Text */}
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
         className="relative z-10 text-[50px] md:text-[100px] leading-[60px] md:leading-[118px] text-white mb-8 md:mb-24 text-center px-4 whitespace-nowrap font-rubik-vinyl"
         style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
       >
         Case Studies
       </motion.h2>
 
-      {/* Carousel */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
         className="relative z-10 w-full flex-none md:flex-1 flex flex-col items-center justify-center"
       >
-        <motion.div 
+        <motion.div
           className="relative w-full max-w-[100vw] h-[350px] md:h-[500px] flex items-center justify-center mb-4 md:mb-8 touch-pan-y"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
@@ -91,12 +88,12 @@ export default function CaseStudiesSection() {
                   key={item.id}
                   layout
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     scale: isActive ? 1 : 0.85,
                     x: `${relativeIndex * 98}%`,
                     zIndex: isActive ? 30 : 20 - Math.abs(relativeIndex),
-                    filter: isActive ? 'blur(0px)' : 'blur(5px)'
+                    filter: isActive ? 'blur(0px)' : 'blur(5px)',
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: 'spring', damping: 25, stiffness: 120 }}
@@ -104,14 +101,14 @@ export default function CaseStudiesSection() {
                     isActive ? 'border-opacity-100 shadow-2xl' : 'border-opacity-50'
                   }`}
                   onClick={() => {
-                    if (isActive && item.image) {
-                      dispatch(openImageViewer({ src: item.image, alt: item.title }));
+                    if (isActive) {
+                      router.push(`/case-study/${item.slug}`);
                     } else {
                       setActiveIndex(index);
                     }
                   }}
                 >
-                  <div 
+                  <div
                     className="w-full h-full bg-cover bg-center bg-[#191919] flex items-center justify-center"
                     style={{ backgroundImage: item.image ? `url('${item.image}')` : 'none' }}
                   >
@@ -122,13 +119,21 @@ export default function CaseStudiesSection() {
                     )}
                   </div>
                   {!isActive && <div className="absolute inset-0 bg-black/40 pointer-events-none" />}
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/50 text-white text-sm backdrop-blur-sm border border-white/20"
+                    >
+                      Click to view project
+                    </motion.div>
+                  )}
                 </motion.div>
               );
             })}
           </AnimatePresence>
         </motion.div>
 
-        {/* Dynamic Title for the active project */}
         <motion.div
           key={activeIndex}
           initial={{ opacity: 0, y: 10 }}
@@ -142,15 +147,14 @@ export default function CaseStudiesSection() {
         </motion.div>
       </motion.div>
 
-      {/* Controls */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
         className="relative z-10 mt-8 md:mt-24 flex flex-row items-center gap-[23px]"
       >
-        <button 
+        <button
           onClick={prevSlide}
           className="w-[60px] h-[60px] md:w-[85px] md:h-[82px] rounded-full bg-[#FE804D]/10 border border-[#FE804D] flex items-center justify-center hover:bg-[#FE804D]/20 transition-colors group"
           aria-label="Previous slide"
@@ -160,7 +164,7 @@ export default function CaseStudiesSection() {
           </svg>
         </button>
 
-        <button 
+        <button
           onClick={nextSlide}
           className="w-[60px] h-[60px] md:w-[85px] md:h-[82px] rounded-full bg-[#FE804D]/10 border border-[#FE804D] flex items-center justify-center hover:bg-[#FE804D]/20 transition-colors group"
           aria-label="Next slide"

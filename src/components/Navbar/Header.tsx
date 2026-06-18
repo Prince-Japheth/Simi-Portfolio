@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const { scrollY } = useScroll();
   const pathname = usePathname();
-  const isAboutPage = pathname === '/about' || pathname.startsWith('/experience');
+  const isAboutPage = pathname === '/about' || pathname.startsWith('/experience') || pathname.startsWith('/case-study');
   const [show, setShow] = useState(isAboutPage);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -56,10 +56,10 @@ export default function Header() {
         </button>
       </div>
 
-      <nav className="hidden md:flex flex-row items-center justify-center gap-5 px-[30px] py-[14px] bg-gradient-to-r from-[#D5543C] via-[#FF7418] to-black rounded-[18px] pointer-events-auto shadow-lg">
+      <nav className="hidden md:flex flex-row items-center justify-between gap-20 px-[30px] py-[14px] bg-gradient-to-r from-[#D5543C] via-[#FF7418] to-black rounded-[18px] pointer-events-auto shadow-lg">
         <Link href="/about" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">About</Link>
-        <Link href="/about#experience" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">Experience</Link>
-        <Link href="/#outside" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap">Outside Digital Products</Link>
+        <Link href="/experience" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors">Experience</Link>
+        <Link href="/#outside" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap">Services</Link>
       </nav>
 
       <button className="hidden md:flex flex-row items-center justify-center gap-[3px] w-[103px] h-[44px] bg-[#FF7418] border border-[#FF7418] rounded-[20px] pointer-events-auto hover:bg-[#D35A05] transition-colors shadow-lg group">
@@ -78,8 +78,8 @@ export default function Header() {
             className="md:hidden absolute top-[60px] left-6 right-6 flex flex-col gap-4 p-5 bg-[#0E0B0E] border border-white/10 pointer-events-auto shadow-2xl rounded-[18px]"
           >
             <Link href="/about" onClick={() => setMenuOpen(false)} className="text-[16px] font-semibold text-white hover:text-white/80 transition-colors">About</Link>
-            <Link href="/about#experience" onClick={() => setMenuOpen(false)} className="text-[16px] font-semibold text-white hover:text-white/80 transition-colors">Experience</Link>
-            <Link href="/#outside" onClick={() => setMenuOpen(false)} className="text-[16px] font-semibold text-white hover:text-white/80 transition-colors">Outside Digital Products</Link>
+            <Link href="/experience" onClick={() => setMenuOpen(false)} className="text-[16px] font-semibold text-white hover:text-white/80 transition-colors">Experience</Link>
+            <Link href="/#outside" onClick={() => setMenuOpen(false)} className="text-[16px] font-semibold text-white hover:text-white/80 transition-colors">Services</Link>
             <div className="h-[1px] w-full bg-white/10 my-2" />
             <button className="flex flex-row items-center justify-center gap-2 w-full h-[44px] bg-[#FF7418] rounded-[20px] hover:bg-[#D35A05] transition-colors text-white font-bold text-[15px]">
               Contact
