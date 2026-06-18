@@ -54,34 +54,36 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
       className="relative w-full md:min-h-[1056px] flex flex-col items-center py-4 md:py-20 overflow-hidden bg-[#030303]"
     >
       {/* Header with Back Button, Title, and Subtitle */}
-      <div className="relative z-10 w-full max-w-[1043px] mx-auto px-4 mb-4 md:mb-8">
-        <div className="relative flex flex-col items-center gap-[10px]">
-          <div className="absolute left-0 top-0">
-            <BackButton />
+      <div className="relative z-10 w-full max-w-[1043px] mx-auto px-4 mb-8 md:mb-4">
+        <div className="flex flex-row items-center gap-4 w-full">
+          <BackButton className="shrink-0 w-9 h-9 md:w-auto md:h-auto" />
+          <div className="flex flex-col items-center gap-[10px] flex-1">
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 100 }}
+              className="flex flex-col items-center gap-[10px] w-full"
+            >
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.15, type: 'spring', damping: 15, stiffness: 120 }}
+                className="font-rufina font-normal text-[20px] md:text-[35px] leading-[26px] md:leading-[43px] text-white text-center w-full"
+              >
+                {data.title}
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.25, duration: 0.6 }}
+                className="font-rufina font-normal text-[14px] md:text-[25px] leading-[18px] md:leading-[31px] text-white text-center w-full"
+              >
+                {data.subtitle}
+              </motion.p>
+            </motion.div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', damping: 20, stiffness: 100 }}
-            className="flex flex-col items-center gap-[10px] w-full"
-          >
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.15, type: 'spring', damping: 15, stiffness: 120 }}
-              className="font-rufina font-normal text-[28px] md:text-[35px] leading-[35px] md:leading-[43px] text-white text-center w-full"
-            >
-              {data.title}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.25, duration: 0.6 }}
-              className="font-rufina font-normal text-[20px] md:text-[25px] leading-[26px] md:leading-[31px] text-white text-center w-full"
-            >
-              {data.subtitle}
-            </motion.p>
-          </motion.div>
+          {/* Spacer for balance */}
+          <div className="shrink-0 w-9 h-9 md:w-auto md:h-auto" />
         </div>
       </div>
 
@@ -96,7 +98,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         {carouselType === 'ux-writing' ? (
           // UX Writing: Single item
           <motion.div
-            className="relative w-[80vw] md:w-[728px] h-[220px] md:h-[479px] rounded-[30px] border-2 border-black overflow-hidden cursor-pointer"
+            className="relative w-[80vw] md:w-[728px] aspect-square md:h-[479px] rounded-[30px] border-2 border-black overflow-hidden cursor-pointer"
             onClick={() => {
               dispatch(openImageViewer({ src: data.showcaseImages[0], alt: `${data.title} showcase` }));
             }}
@@ -109,7 +111,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         ) : carouselType === 'product-design' ? (
           // Product Design: EXACTLY like DashboardsSection
           <motion.div 
-            className="relative w-full max-w-[100vw] h-[220px] md:h-[648px] flex items-center justify-center touch-pan-y"
+            className="relative w-full max-w-[100vw] aspect-square md:h-[648px] flex items-center justify-center touch-pan-y"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -144,7 +146,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                     }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                    className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] h-[220px] md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
+                    className={`absolute w-[80vw] md:w-[851px] lg:w-[1043px] aspect-square md:h-[532px] lg:h-[648px] rounded-[20px] md:rounded-[30px] border-2 border-black overflow-hidden cursor-pointer ${
                       isActive ? 'border-opacity-100' : 'border-opacity-50'
                     }`}
                     onClick={() => {
@@ -168,7 +170,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         ) : carouselType === 'ux-research' ? (
           // UX Research: 3 items with specific sizes
           <motion.div 
-            className="relative w-full max-w-[1353px] h-[220px] md:h-[648px] flex items-center justify-center gap-[72px] touch-pan-y"
+            className="relative w-full max-w-[1353px] aspect-square md:h-[648px] flex items-center justify-center gap-[72px] touch-pan-y"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -222,7 +224,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         ) : (
           // Default, Growth & Campaign, Brand Experience
           <motion.div 
-            className="relative w-full h-[220px] md:h-[479px] flex items-center justify-center touch-pan-y"
+            className="relative w-full aspect-square md:h-[479px] flex items-center justify-center touch-pan-y"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -298,7 +300,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-          className="relative z-10 mt-4 md:mt-4 flex flex-row items-center gap-[23px]"
+          className="relative z-10 mt-8 md:mt-0 flex flex-row items-center gap-[23px]"
         >
           {/* Prev Button */}
           <button 
