@@ -58,8 +58,9 @@ function ClickableImage({
       whileHover={{ scale: 1.03, rotate: direction === 'left' ? -1 : direction === 'right' ? 1 : 0 }}
       whileTap={{ scale: 0.97 }}
       onClick={() => dispatch(openImageViewer({ src, alt }))}
-      className={`group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#191919] cursor-pointer ${containerClassName ?? ''}`}
+      className={`group relative overflow-hidden rounded-[20px] border border-white/10 bg-transparent cursor-pointer p-0 m-0 leading-0 ${containerClassName ?? ''}`}
       aria-label={`View ${alt}`}
+      style={{ lineHeight: 0 }}
     >
       {!hasError ? (
         <Image
@@ -136,12 +137,12 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
         </motion.div>
 
         {/* Main content: hero image + description */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-0">
-          <motion.div style={{ y: heroParallax }} className="w-full lg:w-[534px] shrink-0">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-0 pt-0">
+          <motion.div style={{ y: heroParallax }} className="w-full lg:w-[534px] shrink-0 m-0 p-0 self-start">
             <ClickableImage
               src={data.heroImage}
               alt={`${data.title} hero`}
-              containerClassName="w-full aspect-[534/345] max-md:aspect-[16/10]"
+              containerClassName="w-full aspect-[534/345] max-md:aspect-[16/10] m-0 p-0"
               direction="scale"
               delay={0.1}
             />
@@ -153,14 +154,14 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ type: 'spring', damping: 22, stiffness: 90, delay: 0.25 }}
-            className="flex-1 lg:pt-2"
+            className="flex-1 m-0 p-0 self-start -mt-10"
           >
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ staggerChildren: 0.05 }}
-              className="font-sora font-normal text-base md:text-[20px] leading-[25px] text-white text-justify"
+              className="font-sora font-normal text-base md:text-[20px] leading-[25px] text-white m-0 p-0 pt-0"
             >
               {data.description.split('. ').map((sentence, i) => (
                 <motion.span

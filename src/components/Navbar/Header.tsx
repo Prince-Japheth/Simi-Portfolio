@@ -56,11 +56,11 @@ export default function Header() {
         </button>
       </div>
 
-      <nav className="hidden md:flex flex-row items-center justify-between gap-20 px-[30px] py-[14px] bg-gradient-to-r from-[#D5543C] via-[#FF7418] to-black rounded-[18px] pointer-events-auto shadow-lg">
+      <nav className="hidden md:flex flex-row items-center justify-between gap-5 px-[30px] py-[14px] bg-gradient-to-r from-[#D5543C] via-[#FF7418] to-black rounded-[20px] pointer-events-auto shadow-lg">
         <Link href="/" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors" style={{ fontFamily: 'Sora, sans-serif' }}>Home</Link>
         <Link href="/about" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors" style={{ fontFamily: 'Sora, sans-serif' }}>About</Link>
         <Link href="/experience" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors" style={{ fontFamily: 'Sora, sans-serif' }}>Experience</Link>
-        <Link href="/#outside" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap" style={{ fontFamily: 'Sora, sans-serif' }}>Services</Link>
+        <Link href="/#services" className="text-[15px] font-semibold text-white hover:text-white/80 transition-colors whitespace-nowrap" style={{ fontFamily: 'Sora, sans-serif' }}>Services</Link>
       </nav>
 
       <button className="hidden md:flex flex-row items-center justify-center gap-[3px] w-[103px] h-[44px] bg-[#FF7418] border border-[#FF7418] rounded-[20px] pointer-events-auto hover:bg-[#D35A05] transition-colors shadow-lg group">

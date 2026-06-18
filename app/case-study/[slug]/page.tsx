@@ -25,7 +25,7 @@ const caseStudiesData: Record<
   homify: {
     title: 'Homify',
     description:
-      'Homify is a home services platform designed to connect homeowners with trusted professionals for repairs, maintenance, and renovations. As Product Designer, I shaped end-to-end booking flows, service discovery, and provider profiles to reduce friction and build confidence in every interaction. The work focused on clarity, trust signals, and mobile-first patterns that made finding and booking home services feel simple and reliable.',
+      'Homify is a rental platform designed to simplify how people discover, evaluate, and secure apartments. The product focused on reducing the friction often associated with property searches by creating a more transparent and user-friendly rental experience. As the Product Designer, I worked on improving apartment discovery, property listing experiences, search and filtering systems, and the overall booking journey. The goal was to help users make informed housing decisions faster while creating a seamless experience from property exploration to inquiry.',
     heroImage: '/images/case-studies/details/homify/hero.avif',
     gallery: [
       '/images/case-studies/details/homify/gallery-1.avif',
@@ -35,7 +35,7 @@ const caseStudiesData: Record<
   scheweppes: {
     title: 'Scheweppes',
     description:
-      'Scheweppes is a brand-forward digital experience exploring bold visual identity and engaging product storytelling. I led the design direction across key screens, balancing playful aesthetics with clear navigation and conversion-focused layouts. The project emphasized motion, typography, and immersive visuals that captured brand personality while keeping the experience intuitive across devices.',
+      'Schweppes is a globally recognized beverage brand known for its premium mixers and sparkling drinks. This concept explored how digital design could elevate product discovery, brand engagement, and consumer interaction through a modern, visually-driven experience. The focus was on translating Schweppes\' heritage, sophistication, and vibrant product range into an engaging digital journey that strengthened brand perception and encouraged product exploration.',
     heroImage: '/images/case-studies/details/scheweppes/hero.avif',
     gallery: [
       '/images/case-studies/details/scheweppes/gallery-1.avif',
