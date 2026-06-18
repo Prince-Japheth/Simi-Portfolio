@@ -136,7 +136,7 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
         </motion.div>
 
         {/* Main content: hero image + description */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-6 md:mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-0">
           <motion.div style={{ y: heroParallax }} className="w-full lg:w-[534px] shrink-0">
             <ClickableImage
               src={data.heroImage}
