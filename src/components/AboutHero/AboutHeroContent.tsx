@@ -48,7 +48,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
           style={{ opacity: textOpacity }}
           className={`relative max-md:w-full md:absolute z-30 md:left-[180px] md:top-[160px] md:w-[478px] order-1 ${sora.className}`}
         >
-          <p className="text-white text-[23px] max-md:text-[18px] leading-[29px] max-md:leading-[24px] text-justify font-normal">
+          <p className="text-white text-[23px] max-md:text-[18px] leading-[29px] max-md:leading-[24px] font-normal">
             Over the years, I evolved from visual design into designing products, shaping systems, and helping teams bring ideas to life.
           </p>
         </motion.div>
@@ -66,7 +66,7 @@ export default function AboutHeroContent({ scrollProgress }: { scrollProgress: M
           style={{ opacity: textOpacity }}
           className={`relative max-md:w-full md:absolute z-30 md:left-[889px] md:top-[802px] max-lg:md:left-auto max-lg:md:right-[24px] md:w-[448px] order-3 ${sora.className}`}
         >
-          <p className="text-white text-[23px] max-md:text-[18px] leading-[29px] max-md:leading-[24px] text-justify font-normal">
+          <p className="text-white text-[23px] max-md:text-[18px] leading-[29px] max-md:leading-[24px] font-normal">
             Today, my work sits at the intersection of product design, product thinking, and execution. I enjoy solving complex problems, simplifying workflows, and building experiences that feel intuitive to the people who use them.
           </p>
         </motion.div>

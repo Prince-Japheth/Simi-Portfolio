@@ -8,9 +8,18 @@ export default function SiteLoader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Hide loader quickly to fix loading time complaint
+    // Check if we've already loaded the site in this session
+    const hasLoadedBefore = sessionStorage.getItem('siteHasLoaded');
+    
+    if (hasLoadedBefore) {
+      setIsLoading(false);
+      return;
+    }
+
+    // First time loading, show the loader
     const timer = setTimeout(() => {
       setIsLoading(false);
+      sessionStorage.setItem('siteHasLoaded', 'true');
     }, 800);
 
     return () => clearTimeout(timer);
