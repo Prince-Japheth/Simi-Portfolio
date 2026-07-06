@@ -32,14 +32,14 @@ const expertises = [
       '/images/expertise/ux-reseach/ux-research.avif'
     ]
   },
-  {
-    id: 'ux-writing',
-    title: 'UX Writing',
-    subtitle: 'Crafting clear, concise, and user-centric copy that guides users through products and enhances the overall experience.',
-    showcaseImages: [
-      '/images/expertise/ux-writing/c88a08fdd9e23368b0dec75cd5978e0735d6921c.avif'
-    ]
-  },
+  // {
+  //   id: 'ux-writing',
+  //   title: 'UX Writing',
+  //   subtitle: 'Crafting clear, concise, and user-centric copy that guides users through products and enhances the overall experience.',
+  //   showcaseImages: [
+  //     '/images/expertise/ux-writing/c88a08fdd9e23368b0dec75cd5978e0735d6921c.avif'
+  //   ]
+  // },
   {
     id: 'growth-campaign-design',
     title: 'Growth & Campaign Design',
