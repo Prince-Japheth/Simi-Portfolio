@@ -42,8 +42,8 @@ import ImageViewerModal from '@/components/UI/ImageViewerModal/ImageViewerModal'
 import SmoothScrolling from '@/components/SmoothScroll/SmoothScrolling';
 
 export const metadata: Metadata = {
-  generator: 'Japheth, https://japhetjerry.space',
-  authors: [{ name: 'Japheth', url: 'https://japhetjerry.space' }],
+  generator: 'Japheth, https://japhethjerry.space',
+  authors: [{ name: 'Japheth', url: 'https://japhethjerry.space' }],
   title: 'Simi | Product & UX Designer Portfolio',
   description:
     'Explore the UX/UI designs, digital products, and product strategy of Simi.',
