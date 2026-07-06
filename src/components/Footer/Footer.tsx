@@ -103,10 +103,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="w-full flex justify-center items-center mt-4">
+        {/* Bottom Copyright & Credit */}
+        <div className="w-full flex flex-col justify-center items-center my-3 gap-2">
           <p className="text-white text-[20px] leading-[25px]">
             © Simisola Orunsolu 2026
+          </p>
+          <p className="text-white/50 text-[14px] font-light tracking-wide mt-1">
+            Designed by Simi, developed by <a href="https://japhetjerry.space" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline decoration-white/30 underline-offset-2">Japheth</a>.
           </p>
         </div>
 
