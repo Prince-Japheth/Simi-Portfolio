@@ -45,7 +45,7 @@ export default function ExperienceSection() {
       </motion.h2> */}
 
       {/* Grid */}
-      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-4 grid grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[31px] justify-items-center">
+      <div className="pt-5 relative z-10 w-full max-w-[1080px] mx-auto px-4 grid grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[31px] justify-items-center">
         {experiences.map((exp, index) => {
           const mobileX = isMobile ? (index % 2 === 0 ? -50 : 50) : 0;
           return (
