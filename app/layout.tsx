@@ -39,6 +39,7 @@ const rubikVinyl = localFont({
 
 import SiteLoader from '@/components/Loader/SiteLoader';
 import ImageViewerModal from '@/components/UI/ImageViewerModal/ImageViewerModal';
+import SmoothScrolling from '@/components/SmoothScroll/SmoothScrolling';
 
 export const metadata: Metadata = {
   title: 'Simi | Product & UX Designer Portfolio',
@@ -75,11 +76,13 @@ export default function RootLayout({
       className={`${righteous.variable} ${rufina.variable} ${rubikVinyl.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[#030303] overflow-x-hidden">
-        <SiteLoader />
-        <StoreProvider>
-          <ErrorBoundary>{children}</ErrorBoundary>
-          <ImageViewerModal />
-        </StoreProvider>
+        <SmoothScrolling>
+          <SiteLoader />
+          <StoreProvider>
+            <ErrorBoundary>{children}</ErrorBoundary>
+            <ImageViewerModal />
+          </StoreProvider>
+        </SmoothScrolling>
       </body>
     </html>
   );

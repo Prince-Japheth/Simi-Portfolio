@@ -18,12 +18,15 @@ export default function HeroVideo({
     if (!video) return;
 
     const jumpToStart = () => {
+      // On mobile, seeking immediately causes buffering delays and a blank background
+      if (window.innerWidth < 768) return;
       if (video.readyState >= 1) {
         video.currentTime = START_TIME;
       }
     };
 
     const handleTimeUpdate = () => {
+      if (window.innerWidth < 768) return;
       if (video.currentTime < START_TIME) {
         video.currentTime = START_TIME;
       }
