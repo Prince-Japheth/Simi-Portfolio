@@ -37,7 +37,7 @@ export default function CaseStudiesSection() {
     <section
       className="relative w-full md:min-h-[972px] flex flex-col items-center py-20 overflow-hidden"
       style={{
-        background: 'linear-gradient(0deg, #D5543C, #D5543C), linear-gradient(171.06deg, #151515 11.07%, #D5543C 113.91%)',
+        background: 'linear-gradient(0deg, rgb(255, 40, 0), rgb(255, 91, 60)), linear-gradient(23.49deg, rgb(76, 41, 41) 25.39%, rgb(184, 82, 63) 88.6%)',
         backgroundBlendMode: 'color, overlay, normal',
         backgroundSize: 'cover, cover, cover',
         backgroundPosition: 'center',

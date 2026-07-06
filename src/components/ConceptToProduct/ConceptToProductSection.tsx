@@ -15,7 +15,7 @@ export default function ConceptToProductSection() {
     <section 
       className="relative w-full md:min-h-[1099px] flex flex-col items-center py-20 overflow-hidden"
       style={{
-        background: 'linear-gradient(0deg, rgba(213,84,60,0.88), rgba(213,84,60,0.88)), linear-gradient(15.78deg, #151515 30.2%, #D5543C 93.54%)',
+        background: 'linear-gradient(0deg, rgb(255, 40, 0), rgb(255, 91, 60)), linear-gradient(23.49deg, rgb(76, 41, 41) 25.39%, rgb(184, 82, 63) 88.6%)',
         backgroundBlendMode: 'color, overlay, normal',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
