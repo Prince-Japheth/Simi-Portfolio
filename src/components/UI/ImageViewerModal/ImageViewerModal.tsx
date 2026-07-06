@@ -42,7 +42,7 @@ export default function ImageViewerModal() {
           </button>
 
           {/* Controls hint */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-black/50 text-white text-sm rounded-full pointer-events-none">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-black/50 text-white text-xs md:text-sm whitespace-nowrap rounded-full pointer-events-none">
             Scroll to zoom • Drag to pan
           </div>
 
