@@ -28,7 +28,7 @@ export default function HeroSection() {
       </div>
 
       {/* 2. After-Hero Section (Copy) */}
-      <div className="relative w-full h-[80px] md:h-[600px] bg-[#0E0B0E] overflow-hidden z-0">
+      <div className="relative w-full max-md:h-[280px] md:h-[600px] bg-[#0E0B0E] overflow-hidden z-0">
         {/* Frame 1618874930 */}
       </div>
     </div>

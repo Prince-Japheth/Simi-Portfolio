@@ -17,7 +17,15 @@ interface ExpertiseData {
 export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }) {
   const [activeIndex, setActiveIndex] = useState(data.defaultActiveIndex || 0);
   const [isInteracted, setIsInteracted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextSlide = () => {
     setIsInteracted(true);
@@ -174,7 +182,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         ) : carouselType === 'ux-research' ? (
           // UX Research: 3 items with specific sizes
           <motion.div 
-            className="relative w-full max-w-[1353px] aspect-square md:h-[648px] flex items-center justify-center gap-[72px] touch-pan-y"
+            className="relative w-full max-w-[1353px] h-[120vw] md:h-[648px] flex items-center justify-center gap-[72px] touch-pan-y"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -199,8 +207,8 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                     animate={{ 
                       opacity: 1, 
                       x: `${relativeIndex * 100}%`,
-                      width: relativeIndex === 0 ? '443px' : '383px',
-                      height: relativeIndex === 0 ? '648px' : '588px',
+                      width: isMobile ? (relativeIndex === 0 ? '70vw' : '60vw') : (relativeIndex === 0 ? '443px' : '383px'),
+                      height: isMobile ? (relativeIndex === 0 ? '102vw' : '88vw') : (relativeIndex === 0 ? '648px' : '588px'),
                       zIndex: isActive ? 30 : 20,
                       filter: isActive ? 'blur(0px)' : 'blur(5px)'
                     }}
@@ -228,7 +236,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
         ) : (
           // Default, Growth & Campaign, Brand Experience
           <motion.div 
-            className="relative w-full aspect-square md:h-[479px] flex items-center justify-center touch-pan-y"
+            className="relative w-full h-[120vw] md:h-[479px] flex items-center justify-center touch-pan-y"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -247,14 +255,14 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
                 const getSize = () => {
                   if (carouselType === 'growth-campaign') {
                     if (isActive) {
-                      return { width: '365px', height: '479px' };
+                      return isMobile ? { width: '70vw', height: '92vw' } : { width: '365px', height: '479px' };
                     }
-                    return { width: '326px', height: '406px' };
+                    return isMobile ? { width: '60vw', height: '78vw' } : { width: '326px', height: '406px' };
                   } else {
                     if (isActive) {
-                      return { width: '553px', height: '479px' };
+                      return isMobile ? { width: '85vw', height: '74vw' } : { width: '553px', height: '479px' };
                     }
-                    return { width: '412px', height: '406px' };
+                    return isMobile ? { width: '75vw', height: '65vw' } : { width: '412px', height: '406px' };
                   }
                 };
 

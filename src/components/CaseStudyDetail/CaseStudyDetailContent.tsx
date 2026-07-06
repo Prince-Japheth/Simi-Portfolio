@@ -112,7 +112,7 @@ export default function CaseStudyDetailContent({ data }: { data: CaseStudyDetail
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-screen pt-[120px] md:pt-[150px] pb-[80px] md:pb-[100px] bg-[#030303] overflow-hidden"
+      className="relative w-full min-h-screen pt-[80px] md:pt-[150px] pb-[80px] md:pb-[100px] bg-[#030303] overflow-hidden"
     >
 
       <div className="relative z-10 w-full max-w-[1152px] mx-auto px-5 md:px-6">

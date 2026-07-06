@@ -78,12 +78,12 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ s
     <main className="flex min-h-screen flex-col bg-[#030303]">
       <Header />
       
-      <section className="relative w-full min-h-[990px] pt-[150px] pb-[100px] flex flex-col items-center bg-[#030303] overflow-hidden">
+      <section className="relative w-full min-h-[990px] pt-[80px] md:pt-[150px] pb-[100px] flex flex-col items-center bg-[#030303] overflow-hidden">
         {/* Content */}
         <div className="relative z-10 w-full max-w-[1143px] mx-auto px-6 flex flex-col items-start">
           
           {/* Top Bar with Back Button and Title */}
-          <div className="relative flex items-center justify-center w-full mb-[60px] md:mb-[100px]">
+          <div className="relative flex items-center justify-center w-full mb-[40px] md:mb-[100px]">
             <div className="absolute left-0">
               <BackButton />
             </div>

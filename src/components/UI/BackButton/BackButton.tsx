@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function BackButton({ className }: { className?: string }) {
+export default function BackButton({ className = "w-9 h-9 md:w-[44px] md:h-[44px]" }: { className?: string }) {
   const router = useRouter();
 
   return (
