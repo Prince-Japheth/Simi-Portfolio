@@ -63,6 +63,18 @@ const expertises = [
     ]
   },
   {
+    id: 'motion-design',
+    title: 'Motion Design',
+    subtitle: 'Crafting fluid motion choreography, product UI transitions, 3D kinetic animations, and interactive delight.',
+    showcaseImages: [
+      '/images/showcase/7bb6e2a46a621d7e05ec2bf5d36fe6e346ff64ab.avif',
+      '/images/dashboards/f09a94a79d3326567953f52c06428ef5d2087dc6.png',
+      '/images/showcase/1f5891bc17c7fde57be5030a5380dce3dc730c41.avif',
+      '/images/showcase/4324dc3078b363b6d15f4c9fb8740659f9899e75.avif',
+      '/images/showcase/20c134e16c3bccf20ae2cbda96f21df43f36fff5.avif'
+    ]
+  },
+  {
     id: 'brand-experience-design',
     title: 'Brand Experience Design',
     subtitle: 'Building cohesive brand identities and experiences that resonate with audiences and create lasting impressions.',

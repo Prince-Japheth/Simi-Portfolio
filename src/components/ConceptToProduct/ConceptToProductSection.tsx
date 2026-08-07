@@ -27,7 +27,7 @@ export default function ConceptToProductSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className={`w-full text-center text-[#FFFFFF] text-[30px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap z-10 mt-10 md:mt-[60px] mb-16 md:mb-[100px] ${russoOne.className}`}
+        className={`w-full text-center text-[#FFFFFF] text-[30px] sm:text-[44px] md:text-[54px] lg:text-[76px] xl:text-[96px] 2xl:text-[100px] leading-tight md:leading-[1.15] px-4 z-10 mt-10 md:mt-[60px] mb-12 md:mb-[80px] ${russoOne.className}`}
         style={{ fontFamily: russoOne.style.fontFamily }}
       >
         Concept to Product

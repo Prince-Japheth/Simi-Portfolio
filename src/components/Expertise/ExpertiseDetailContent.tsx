@@ -47,7 +47,7 @@ export default function ExpertiseDetailContent({ data }: { data: ExpertiseData }
 
   // Determine carousel type based on expertise
   const getCarouselType = () => {
-    if (data.title === 'Product Design (UIUX)') return 'product-design';
+    if (data.title === 'Product Design (UIUX)' || data.title === 'Motion Design') return 'product-design';
     if (data.title === 'UX Research') return 'ux-research';
     if (data.title === 'Growth & Campaign Design') return 'growth-campaign';
     if (data.title === 'Brand Experience Design') return 'brand-experience';

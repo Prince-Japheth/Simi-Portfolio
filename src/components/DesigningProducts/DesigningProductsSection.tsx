@@ -183,7 +183,7 @@ export default function DesigningProductsSection() {
             y: { duration: 7.5, repeat: Infinity, ease: "easeInOut" },
             rotate: { duration: 9.5, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="absolute right-6 md:left-[1160px] top-[214px] w-[172px] h-[75px]"
+          className="absolute right-4 md:right-8 lg:right-12 xl:left-[1160px] top-[214px] w-[172px] h-[75px] hidden xl:block"
         >
           <svg width="172" height="75" viewBox="0 0 172 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="29.9922" y="37" width="142" height="38" rx="8" fill="#F47C20"/>
@@ -198,7 +198,7 @@ export default function DesigningProductsSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
-          className="absolute right-6 md:left-[1094px] top-[273px] w-[77px] h-[12px] hidden md:block"
+          className="absolute right-4 md:right-8 lg:right-12 xl:left-[1094px] top-[273px] w-[77px] h-[12px] hidden xl:block"
         >
           <svg width="77" height="12" viewBox="0 0 77 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M71.5857 0.0598631C71.2392 0.0848866 69.0856 0.260051 66.7589 0.410191C32.8472 2.66229 18.144 4.71421 4.57931 9.04326C1.78222 9.9441 0.965367 10.3194 0.544566 10.87L0 11.5456L0.519813 11.6207C0.816849 11.6707 2.25252 11.4205 3.71295 11.0451C13.2429 8.66791 23.3173 6.8412 33.8374 5.53998C42.7484 4.43895 48.1446 3.98853 65.1499 2.91253C70.8184 2.53718 75.2987 1.96164 75.9917 1.51122C76.363 1.26099 76.5363 0.935681 76.4868 0.585355C76.4125 0.0598631 76.264 0.0348396 74.3085 0.00981712C73.1451 -0.0152063 71.9322 0.00981712 71.5857 0.0598631Z" fill="#71A6FE"/>
@@ -211,7 +211,7 @@ export default function DesigningProductsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="absolute left-1/2 -translate-x-1/2 top-[116px] w-full text-center text-[#FFFFFF] text-[35px] md:text-[100px] leading-[60px] md:leading-[118px] whitespace-nowrap font-rubik-vinyl"
+          className="absolute left-1/2 -translate-x-1/2 top-[100px] sm:top-[110px] md:top-[116px] w-full text-center text-[#FFFFFF] text-[32px] sm:text-[46px] md:text-[54px] lg:text-[76px] xl:text-[96px] 2xl:text-[100px] leading-tight md:leading-[1.15] px-4 font-rubik-vinyl"
           style={{ fontFamily: 'var(--font-rubik-vinyl)' }}
         >
           Designing Products
@@ -219,7 +219,7 @@ export default function DesigningProductsSection() {
 
         {/* Subtitle */}
         <motion.p 
-          className="absolute left-1/2 -translate-x-1/2 top-[180px] md:top-[248px] w-[90vw] md:w-[1043px] text-center text-[#FFFFFF] text-[16px] md:text-[20px] leading-[25px] font-rufina font-normal"
+          className="absolute left-1/2 -translate-x-1/2 top-[165px] sm:top-[185px] md:top-[205px] lg:top-[248px] w-full max-w-[90vw] md:max-w-[700px] lg:max-w-[1043px] text-center text-[#FFFFFF] text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed md:leading-[28px] font-rufina font-normal px-4"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

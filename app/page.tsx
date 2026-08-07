@@ -5,6 +5,7 @@ import DesigningProductsSection from '@/components/DesigningProducts/DesigningPr
 import HeroSectionsShowcase from '@/components/HeroSectionsShowcase/HeroSectionsShowcase';
 import DashboardsSection from '@/components/Dashboards/DashboardsSection';
 import MobileScreensSection from '@/components/MobileScreens/MobileScreensSection';
+import MotionDesignSection from '@/components/MotionDesign/MotionDesignSection';
 import CaseStudiesSection from '@/components/CaseStudies/CaseStudiesSection';
 import ConceptToProductSection from '@/components/ConceptToProduct/ConceptToProductSection';
 import ProcessSection from '@/components/Process/ProcessSection';
@@ -21,6 +22,7 @@ export default function Home() {
         <HeroSectionsShowcase />
         <DashboardsSection />
         <MobileScreensSection />
+        <MotionDesignSection />
         <CaseStudiesSection />
         <ConceptToProductSection />
         <ProcessSection />
