@@ -123,7 +123,7 @@ export default function MotionVideoModal({ item, onClose }: MotionVideoModalProp
             </div>
 
             {/* Video Player Container */}
-            <div className={`relative w-full bg-black flex items-center justify-center ${
+            <div className={`relative w-full bg-black flex items-start justify-center ${
               item.isMobile ? 'min-h-[420px] max-h-[75vh]' : 'min-h-[300px] md:min-h-[500px] max-h-[75vh]'
             } overflow-hidden group`}>
               <video
