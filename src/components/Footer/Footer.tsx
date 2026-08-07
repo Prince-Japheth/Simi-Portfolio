@@ -16,7 +16,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-black bg-[#000000] flex flex-col items-center py-12 md:py-[42px] px-6 md:px-[164px]">
+    <footer className="relative z-20 w-full bg-black bg-[#000000] flex flex-col items-center py-12 md:py-[42px] px-6 md:px-[164px]">
       <div className="w-full max-w-[1184px] flex flex-col gap-12 md:gap-[52px]">
 
         {/* Main Content Row */}
